@@ -91,6 +91,41 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Variables
+ZETTELKASTEN_FOLDER="/Users/marius.mueller/notes"
+
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
@@ -109,21 +144,24 @@ alias btt="bartib report --today"
 alias bty="bartib report --yesterday"
 alias btl="bartib last -n 20"
 alias ls="eza"
+alias ll="eza -alh"
+alias tree="eza --tree"
 alias cat="bat"
 alias cdp="cd /Volumes/_Private/marius.mueller@sovanta.com"
 alias ..="cd .."
 alias ....="cd ...."
 
 # Custom Exports
-# export BARTIB_FILE="/Users/marius.mueller/activities.bartib"
-#export BARTIB_FILE="/Volumes/_Private/marius.mueller@sovanta.com/activities.bartib"
-export BARTIB_FILE="/Users/marius.mueller/notes/activities.bartib"
+export BARTIB_FILE="${ZETTELKASTEN_FOLDER}/11 - Sovanta/activities.bartib"
 export EDITOR="nvim"
 export SPACESHIP_KUBECTL_SHOW="true"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# Set up Zoxide
+eval "$(zoxide init --cmd cd zsh)"
 
 # Set up starship
 eval "$(starship init zsh)"
