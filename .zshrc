@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -121,6 +122,8 @@ export BARTIB_FILE="/Users/marius.mueller/notes/activities.bartib"
 export EDITOR="nvim"
 export SPACESHIP_KUBECTL_SHOW="true"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# fixes issue with tabbing in zsh (https://github.com/spaceship-prompt/spaceship-prompt/issues/726#issuecomment-534231326)
+export LC_CTYPE=en_US.UTF-8
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)

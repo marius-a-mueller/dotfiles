@@ -28,8 +28,6 @@ $time\
 [ ](fg:color_bg1)\
 $line_break$character"""
 
-# ${custom.bartib}\
-
 palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
@@ -166,11 +164,6 @@ disabled = false
 time_format = "%R"
 style = "bg:color_bg1"
 format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
-
-[custom.bartib]
-when = true
-command = '~/.config/bartib_prompt.zsh'
-format = '[[ $output ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [line_break]
 disabled = false
