@@ -168,3 +168,6 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Set up starship
 eval "$(starship init zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/grr grr

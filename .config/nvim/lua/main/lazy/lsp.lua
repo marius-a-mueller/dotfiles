@@ -29,6 +29,8 @@ return {
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         snippet = {
           expand = function(args)
@@ -76,12 +78,34 @@ return {
       })
 
       require('mason-lspconfig').setup({
-        ensure_installed = {},
+        ensure_installed = {'jsonnet_ls'},
         handlers = {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"
           function(server_name)
             require('lspconfig')[server_name].setup({})
+          end,
+          jsonnet_ls = function()
+            require('lspconfig').jsonnet_ls.setup{
+            settings = {
+            		ext_vars = {},
+            		formatting = {
+            			-- default values
+            			Indent              = 2,
+            			MaxBlankLines       = 2,
+            			StringStyle         = 'single',
+            			CommentStyle        = 'slash',
+            			PrettyFieldNames    = true,
+            			PadArrays           = false,
+            			PadObjects          = true,
+            			SortImports         = true,
+            			UseImplicitPlus     = true,
+            			StripEverything     = false,
+            			StripComments       = false,
+            			StripAllButComments = false,
+            		},
+            	},
+            }
           end,
         }
       })
