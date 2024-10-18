@@ -71,7 +71,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages macos extract z encode64 kubectl kubectx helm zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git colored-man-pages macos extract z encode64 kubectl kubectx helm zsh-syntax-highlighting zsh-autosuggestions zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -168,9 +168,11 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Set up starship
 eval "$(starship init zsh)"
-$
-export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
 
-$
+export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
 export PATH=:/Users/marius/.krew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/Applications/Wireshark.app/Contents/MacOS:/Applications/VMware Fusion.app/Contents/Public:/usr/local/share/dotnet:~/.dotnet/tools:/usr/local/go/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/iTerm.app/Contents/Resources/utilities
 
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/grr grr
+export PATH="/Users/marius.mueller/Library/Python/3.9/bin:$PATH"
