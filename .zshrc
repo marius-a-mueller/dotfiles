@@ -168,3 +168,9 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Set up starship
 eval "$(starship init zsh)"
+$
+export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
+
+$
+export PATH=:/Users/marius/.krew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/TeX/texbin:/Applications/Wireshark.app/Contents/MacOS:/Applications/VMware Fusion.app/Contents/Public:/usr/local/share/dotnet:~/.dotnet/tools:/usr/local/go/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/iTerm.app/Contents/Resources/utilities
+
