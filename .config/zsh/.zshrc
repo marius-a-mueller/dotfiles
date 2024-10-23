@@ -1,5 +1,5 @@
 source "$ZDOTDIR/init.zsh"
-FILES_STR=$(fd --glob '*.zsh' --exclude 'init.zsh' --exclude 'post.zsh' "$ZDOTDIR")
+FILES_STR=$(find "$ZDOTDIR" -name "*.zsh"  -not -name "init.zsh" -not -name "post.zsh")
 
 FILES=($(echo $FILES_STR | tr '\n' ' '))
 
