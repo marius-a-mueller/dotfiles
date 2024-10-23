@@ -1,12 +1,9 @@
-source "$ZDOTDIR/init.zsh"
-FILES_STR=$(find "$ZDOTDIR" -name "*.zsh"  -not -name "init.zsh" -not -name "post.zsh")
-
-FILES=($(echo $FILES_STR | tr '\n' ' '))
-
 if [[ -d "$ZDOTDIR" ]]; then
+  source "$ZDOTDIR/init.zsh"
   for file in "$ZDOTDIR"/*.zsh; do
-    source "$file"
+    if [[ $file != "$ZDOTDIR"/init.zsh ]] && [[ $file != "$ZDOTDIR"/post.zsh ]] ; then
+      source "$file"
+    fi
   done
+  source "$ZDOTDIR/post.zsh"
 fi
-
-source "$ZDOTDIR/post.zsh"
