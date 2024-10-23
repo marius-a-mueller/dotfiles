@@ -79,6 +79,7 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
+alt-e = 'workspace E' # file browser
 alt-b = 'workspace B' # browser
 alt-n = 'workspace N' # notes
 alt-m = 'workspace M' # mail
@@ -96,6 +97,7 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
+alt-shift-e = 'move-node-to-workspace E' # file browser
 alt-shift-b = 'move-node-to-workspace B' # browser
 alt-shift-n = 'move-node-to-workspace N' # notes
 alt-shift-m = 'move-node-to-workspace M' # mail
@@ -106,6 +108,7 @@ alt-shift-x = 'move-node-to-workspace X' # secondary monitor
 alt-r = 'mode resize'
 
 cmd-h = [] # Disable "hide application"
+cmd-m = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 [mode.resize.binding]
@@ -164,4 +167,8 @@ run = "move-node-to-workspace M"
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
-run = "move-node-to-workspace S"
+run = "move-node-to-workspace W"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = "move-node-to-workspace E"
