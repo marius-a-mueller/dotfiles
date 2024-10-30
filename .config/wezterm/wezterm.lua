@@ -77,23 +77,33 @@ config.keys = {
 	},
 	{
 		mods = "LEADER",
-		key = "w",
-		action = wezterm.action.SpawnWindow,
-	},
-	{
-		mods = "LEADER",
 		key = "p",
 		action = wezterm.action.ActivateCommandPalette,
 	},
 	{
 		mods = "LEADER",
-		key = "s",
-		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+		key = "z",
+		action = wezterm.action.TogglePaneZoomState,
+	},
+	{
+		key = "r",
+		mods = "LEADER",
+		action = wezterm.action.PromptInputLine({
+			description = "Enter new name for tab",
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
 	},
 	{
 		mods = "LEADER",
-		key = "z",
-		action = wezterm.action.TogglePaneZoomState,
+		key = "S",
+		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
 	},
 	{
 		mods = "LEADER",
@@ -109,7 +119,7 @@ config.keys = {
 	},
 	{
 		mods = "LEADER",
-		key = "S",
+		key = "C",
 		action = wezterm.action.PromptInputLine({
 			description = wezterm.format({
 				{ Attribute = { Intensity = "Bold" } },
