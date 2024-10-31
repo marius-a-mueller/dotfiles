@@ -27,6 +27,8 @@ $docker_context\
 [](fg:#06969A bg:#33658A)\
 $time\
 [ ](fg:#33658A)\
+$line_break\
+$character\
 """
 
 # Disable the blank line at the start of the prompt
@@ -144,3 +146,8 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
+
+[character]
+success_symbol = "[❯]($style)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"

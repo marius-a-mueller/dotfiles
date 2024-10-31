@@ -22,6 +22,11 @@ config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = {
 	{
 		mods = "LEADER",
+		key = "[",
+		action = wezterm.action.ActivateCopyMode,
+	},
+	{
+		mods = "LEADER",
 		key = "c",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
@@ -56,26 +61,6 @@ config.keys = {
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		mods = "CTRL",
-		key = "h",
-		action = wezterm.action.ActivatePaneDirection("Left"),
-	},
-	{
-		mods = "CTRL",
-		key = "j",
-		action = wezterm.action.ActivatePaneDirection("Down"),
-	},
-	{
-		mods = "CTRL",
-		key = "k",
-		action = wezterm.action.ActivatePaneDirection("Up"),
-	},
-	{
-		mods = "CTRL",
-		key = "l",
-		action = wezterm.action.ActivatePaneDirection("Right"),
-	},
-	{
 		mods = "LEADER",
 		key = "LeftArrow",
 		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
@@ -97,30 +82,66 @@ config.keys = {
 	},
 	{
 		mods = "LEADER",
-		key = "w",
-		action = wezterm.action.SpawnWindow,
-	},
-	{
-		mods = "LEADER",
 		key = "p",
 		action = wezterm.action.ActivateCommandPalette,
 	},
 	{
 		mods = "LEADER",
-		key = "s",
-		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+		key = "z",
+		action = wezterm.action.TogglePaneZoomState,
 	},
 	{
+		key = "r",
 		mods = "LEADER",
-		key = "e",
 		action = wezterm.action.PromptInputLine({
-			description = "Enter new name for workspace",
+			description = "Enter new name for tab",
 			action = wezterm.action_callback(function(window, pane, line)
 				-- line will be `nil` if they hit escape without entering anything
 				-- An empty string if they just hit enter
 				-- Or the actual line of text they wrote
 				if line then
-					window:perform_action(wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }))
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
+	{
+		mods = "LEADER",
+		key = "S",
+		action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+	},
+	{
+		mods = "LEADER",
+		key = "R",
+		action = wezterm.action.PromptInputLine({
+			description = "Rename current workspace",
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
+				end
+			end),
+		}),
+	},
+	{
+		mods = "LEADER",
+		key = "C",
+		action = wezterm.action.PromptInputLine({
+			description = wezterm.format({
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Enter name for new workspace" },
+			}),
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:perform_action(
+						wezterm.action.SwitchToWorkspace({
+							name = line,
+						}),
+						pane
+					)
 				end
 			end),
 		}),
@@ -155,7 +176,7 @@ for i = 1, 9 do
 	table.insert(config.keys, {
 		key = tostring(i),
 		mods = "LEADER",
-		action = wezterm.action.ActivateTab(i),
+		action = wezterm.action.ActivateTab(i - 1),
 	})
 end
 
@@ -165,6 +186,27 @@ config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.tab_and_split_indices_are_zero_based = false
+
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
+-- you can put the rest of your Wezterm config here
+smart_splits.apply_to_config(config, {
+	-- the default config is here, if you'd like to use the default keys,
+	-- you can omit this configuration table parameter and just use
+	-- smart_splits.apply_to_config(config)
+
+	-- directional keys to use in order of: left, down, up, right direction_keys = { 'h', 'j', 'k', 'l' },
+	-- if you want to use separate direction keys for move vs. resize, you
+	-- can also do this:
+	direction_keys = {
+		move = { "h", "j", "k", "l" },
+		resize = { "h", "j", "k", "l" },
+	},
+	-- modifier keys to combine with direction_keys
+	modifiers = {
+		move = "CTRL", -- modifier to use for pane movement, e.g. CTRL+h to move left
+		resize = "CTRL|SHIFT", -- modifier to use for pane resize, e.g. META+h to resize to the left
+	},
+})
 
 -- tmux status
 wezterm.on("update-right-status", function(window, _)
