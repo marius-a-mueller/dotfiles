@@ -91,11 +91,6 @@ config.keys = {
 		action = wezterm.action.TogglePaneZoomState,
 	},
 	{
-		mods = "LEADER",
-		key = "c",
-		action = wezterm.action.SpawnWindow,
-	},
-	{
 		key = "r",
 		mods = "LEADER",
 		action = wezterm.action.PromptInputLine({
