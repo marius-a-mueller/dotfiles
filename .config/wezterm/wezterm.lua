@@ -22,6 +22,11 @@ config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = {
 	{
 		mods = "LEADER",
+		key = "[",
+		action = wezterm.action.ActivateCopyMode,
+	},
+	{
+		mods = "LEADER",
 		key = "c",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
@@ -84,6 +89,11 @@ config.keys = {
 		mods = "LEADER",
 		key = "z",
 		action = wezterm.action.TogglePaneZoomState,
+	},
+	{
+		mods = "LEADER",
+		key = "c",
+		action = wezterm.action.SpawnWindow,
 	},
 	{
 		key = "r",
