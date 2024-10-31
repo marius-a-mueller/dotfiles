@@ -47,3 +47,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Search and replace
 vim.keymap.set("v", "<C-r>", '"hy:%s/<C-r>h//gc<left><left><left>')
+
+-- Jump to error
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<leader>ge", vim.diagnostic.open_float)
