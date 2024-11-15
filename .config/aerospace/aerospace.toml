@@ -147,6 +147,11 @@ X = 'secondary'                  # Non-main monitor in case when there are only 
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
 run = "move-node-to-workspace B"
 
 [[on-window-detected]]
