@@ -20,6 +20,14 @@ config.macos_window_background_blur = 20
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = {
+    {
+    mods = 'LEADER',
+    key = 'L',
+    action = wezterm.action.Multiple {
+      wezterm.action.ClearScrollback 'ScrollbackAndViewport',
+      wezterm.action.SendKey { key = 'L', mods = 'CTRL' },
+    },
+    },
 	{
 		mods = "LEADER",
 		key = "[",
