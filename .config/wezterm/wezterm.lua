@@ -1,5 +1,4 @@
 -- TODO
--- rename tab: leader %
 -- rename workspace
 -- create workspace with name
 -- resize better
@@ -20,14 +19,14 @@ config.macos_window_background_blur = 20
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = {
-    {
-    mods = 'LEADER',
-    key = 'L',
-    action = wezterm.action.Multiple {
-      wezterm.action.ClearScrollback 'ScrollbackAndViewport',
-      wezterm.action.SendKey { key = 'L', mods = 'CTRL' },
-    },
-    },
+	{
+		mods = "LEADER",
+		key = "L",
+		action = wezterm.action.Multiple({
+			wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+			wezterm.action.SendKey({ key = "L", mods = "CTRL" }),
+		}),
+	},
 	{
 		mods = "LEADER",
 		key = "[",
@@ -67,6 +66,11 @@ config.keys = {
 		mods = "LEADER",
 		key = "-",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = ".",
+		action = wezterm.action.RotatePanes("Clockwise"),
 	},
 	{
 		mods = "LEADER",
