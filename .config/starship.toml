@@ -23,7 +23,7 @@ $nim\
 $rust\
 $scala\
 [](fg:#86BBD8 bg:#06969A)\
-$docker_context\
+$kubernetes\
 [](fg:#06969A bg:#33658A)\
 $time\
 [ ](fg:#33658A)\
@@ -77,6 +77,12 @@ format = '[ $symbol ($version) ]($style)'
 symbol = " "
 style = "bg:#06969A"
 format = '[ $symbol $context ]($style)'
+
+[kubernetes]
+symbol = "⎈ "
+style = "bg:#06969A"
+format = "[ $symbol $context ]($style)"
+disabled = false
 
 [elixir]
 symbol = " "

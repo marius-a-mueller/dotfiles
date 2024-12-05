@@ -31,3 +31,6 @@ vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 
 vim.opt.scrolloff = 10
+
+-- show invisible characters (tabs, trailing whitespaces, etc.)
+vim.opt.list = true

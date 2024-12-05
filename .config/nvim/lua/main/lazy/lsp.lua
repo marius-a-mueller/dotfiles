@@ -57,7 +57,7 @@ return {
 						:absolute()
 
 					if not prettier then
-						return null
+						return nil
 					end
 
 					return {
@@ -93,6 +93,7 @@ return {
 				-- All formatter configurations are opt-in
 				filetype = {
 					typescript = { prettierConfig("ts") },
+					json = { prettierConfig("ts") },
 					-- Formatter configurations for filetype "lua" go here
 					-- and will be executed in order
 					lua = {
