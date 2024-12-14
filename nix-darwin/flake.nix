@@ -13,9 +13,14 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager, ... }:
   let
     configuration = { pkgs, config, ... }: {
 
@@ -144,15 +149,31 @@
           "/Applications/Bitwarden.app"
           "${pkgs.zotero}/Applications/Zotero.app"
         ];
-        finder.FXPreferredViewStyle = "clmv";
+        dock.persistent-others = [
+          "/Users/marius/Downloads"
+        ];
+        dock.show-recents = false;
         loginwindow.GuestEnabled  = false;
-        finder.AppleShowAllExtensions = true;
         loginwindow.LoginwindowText = "call 017664822713";
         screencapture.location = "~/Downloads";
         NSGlobalDomain.AppleICUForce24HourTime = true;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
         NSGlobalDomain.KeyRepeat = 2;
+        WindowManager.EnableStandardClickToShowDesktop = false;
+        finder.NewWindowTarget = "Home";
+        finder.FXPreferredViewStyle = "Nlsv";
+        finder.AppleShowAllExtensions = true;
+        controlcenter.AirDrop = false;
+        controlcenter.BatteryShowPercentage = false;
+        controlcenter.NowPlaying = false;
+        controlcenter.FocusModes = false;
+        controlcenter.Display = false;
+        controlcenter.Bluetooth = false;
+        controlcenter.Sound = false;
       };
+
+      system.keyboard.enableKeyMapping = true;
+      system.keyboard.remapCapsLockToEscape = true;
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
@@ -185,6 +206,7 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#simple
     darwinConfigurations."MacBook" = nix-darwin.lib.darwinSystem {
+      specialArgs = { inherit inputs; };
       modules = [
         configuration
         nix-homebrew.darwinModules.nix-homebrew
@@ -200,6 +222,7 @@
           };
         }
         home-manager.darwinModules.home-manager {
+          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.marius = import ./home.nix;

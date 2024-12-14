@@ -1,7 +1,7 @@
 # home.nix
 # home-manager switch
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   home.username = "marius";
@@ -10,6 +10,10 @@
 
 # Makes sense for user specific applications that shouldn't be available system-wide
   home.packages = [
+  ];
+
+  imports = [
+    ./firefox.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -30,12 +34,17 @@
     # ".config/nushell".source = ~/dotfiles/nushell;
   };
 
+  # fix for firefox
+  # https://github.com/nix-community/home-manager/pull/5801/files
   home.sessionVariables = {
+    MOZ_LEGACY_PROFILES = 1;
+    MOZ_ALLOW_DOWNGRADE = 1;
+    EDITOR = "nvim";
   };
 
   home.sessionPath = [
     "/run/current-system/sw/bin"
-      "$HOME/.nix-profile/bin"
+    "$HOME/.nix-profile/bin"
   ];
   programs.home-manager.enable = true;
   programs.zsh = {
