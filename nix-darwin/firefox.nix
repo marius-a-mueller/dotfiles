@@ -39,9 +39,9 @@
           "signon.rememberSignons" = false;
         };
 
-        # userChrome = ''
-        #   /* some css */
-        # '';
+        userChrome = ''
+          /* some css */
+        '';
 
         # nix flake show "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"
         extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
@@ -51,7 +51,6 @@
           return-youtube-dislikes
           bitwarden
           vimium
-          sidebery
           libredirect
           i-dont-care-about-cookies
           startpage-private-search

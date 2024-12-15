@@ -10,8 +10,11 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Mocha"
 
--- config.font = wezterm.font("Iosevka Nerd Font Mono")
-config.font_size = 15
+-- Spawn a fish shell in login mode
+config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
+
+config.font = wezterm.font("Iosevka Nerd Font Mono")
+config.font_size = 16
 
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8

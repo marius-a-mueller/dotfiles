@@ -30,6 +30,8 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
+          pkgs.bash
+          pkgs.fish
           pkgs.neofetch
           pkgs.neovim
           pkgs.starship
@@ -64,12 +66,6 @@
           pkgs.spotify
           pkgs.signal-desktop
           pkgs.rsync
-          pkgs.zsh
-          pkgs.oh-my-zsh
-          pkgs.zsh-powerlevel10k
-          pkgs.zsh-vi-mode
-          pkgs.zsh-autosuggestions
-          pkgs.zsh-completions
           pkgs.fnm
         ];
 
@@ -121,7 +117,7 @@
       };
 
       fonts.packages = [
-        (pkgs.nerd-fonts.fira-code)
+        (pkgs.nerd-fonts.iosevka)
       ];
 
       ids.gids.nixbld = 350;
@@ -195,6 +191,16 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
+
+      programs.bash = {
+        interactiveShellInit = ''
+          if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+          then
+            shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+            exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+          fi
+        '';
+      };
 
       users.users.marius.home = "/Users/marius";
       home-manager.backupFileExtension = "backup";

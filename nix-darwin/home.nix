@@ -14,24 +14,18 @@
 
   imports = [
     ./firefox.nix
+    ./shell.nix
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # ".zshrc".source = ~/dotfiles/zshrc/.zshrc;
-    # ".config/wezterm".source = ~/dotfiles/wezterm;
-    # ".config/skhd".source = ~/dotfiles/skhd;
-    # ".config/starship".source = ~/dotfiles/starship;
-    # ".config/zellij".source = ~/dotfiles/zellij;
-    # ".config/nvim".source = ~/dotfiles/nvim;
-    # ".config/nix".source = ~/dotfiles/nix;
-    # ".config/nix-darwin".source = ~/dotfiles/nix-darwin;
-    # ".config/tmux".source = ~/dotfiles/tmux;
-    # ".config/ghostty".source = ~/dotfiles/ghostty;
-    # ".config/aerospace".source = ~/dotfiles/aerospace;
-    # ".config/sketchybar".source = ~/dotfiles/sketchybar;
-    # ".config/nushell".source = ~/dotfiles/nushell;
+    ".config/wezterm".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/wezterm";
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/nvim";
+    ".config/aerospace".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/aerospace";
+    ".config/neofetch".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/neofetch";
+    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/starship.toml";
+    ".config/qBittorrent".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/qBittorrent";
+    ".config/nix-darwin".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/nix-darwin";
+    ".config/nix".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/nix";
   };
 
   # fix for firefox
@@ -47,14 +41,4 @@
     "$HOME/.nix-profile/bin"
   ];
   programs.home-manager.enable = true;
-  programs.zsh = {
-    enable = true;
-    initExtra = ''
-      # Add any additional configurations here
-      export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin:$PATH
-      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      fi
-    '';
-  };
 }
