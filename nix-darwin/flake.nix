@@ -138,6 +138,7 @@
         dock.persistent-apps = [
           "${pkgs.wezterm}/Applications/WezTerm.app"
           "/Applications/Firefox.app"
+          "/Applications/Mullvad Browser.app"
           "${pkgs.obsidian}/Applications/Obsidian.app"
           "/System/Applications/Mail.app"
           "/System/Applications/Calendar.app"

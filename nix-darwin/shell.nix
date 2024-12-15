@@ -7,6 +7,7 @@
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
         fish_vi_key_bindings
+        starship init fish | source
       '';
       shellAliases = {
         rm = "rm -i";
@@ -21,6 +22,10 @@
         o = "open";
         p = "python3";
       };
+    };
+    starship = {
+      enable = true;
+      enableFishIntegration = true;
     };
   };
 }
