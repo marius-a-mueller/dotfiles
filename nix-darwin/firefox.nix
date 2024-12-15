@@ -8,6 +8,17 @@
       profiles.marius = {
         isDefault = true;
         search.engines = {
+          "Startpage" = {
+            urls = [{
+              template = "https://www.startpage.com/sp/search";
+              params = [
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+
+            icon = "https://raw.githubusercontent.com/simple-icons/simple-icons/refs/heads/develop/icons/startpage.svg";
+            definedAliases = [ "@s" ];
+          };
           "Nix Packages" = {
             urls = [{
               template = "https://search.nixos.org/packages";
@@ -22,7 +33,7 @@
           };
         };
         search.force = true;
-        search.default = "Startpage - English";
+        search.default = "Startpage";
 
         bookmarks = [
           {
@@ -45,7 +56,6 @@
           vimium
           libredirect
           i-dont-care-about-cookies
-          startpage-private-search
           zotero-connector
         ];
         settings = {

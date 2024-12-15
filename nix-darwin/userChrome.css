@@ -10,14 +10,14 @@
 
 
 /*fixed positioning*/
-#sidebar-main {       
+#sidebar-main {
     position: absolute !important;
     top: calc(var(--uc-topbars-combined-height) - 2px) !important;
-    left:0px !important;
-    top: 69px !important;
+    left: 0px !important;
+    top: 40px !important;
     z-index:999 !important;
     bottom: 0px;
-}    
+}
 /*autohide*/
 #sidebar-main:has([expanded]) {
     transition: width 80ms linear 70ms !important;
@@ -27,7 +27,7 @@
         width: var(--uc-vertical-collapsed-width) !important;
         /*z-index: 10 !important;*/
     }
-}    
+}
 /*adjustments for elements within*/
 #sidebar-main:has([expanded=""]):not(:hover) {
     & .tabbrowser-tab{width: var(--uc-vertical-collapsed-width) !important; min-width: 0px !important;}
@@ -44,7 +44,7 @@
     #tabbrowser-tabbox[inFullscreen="true"] {
         #sidebar-main {
             top:0 !important;
-            height:100vh !important;   
+            height:100vh !important;
         }
         #navigator-toolbox:has(+ #browser > #sidebar-main:not([hidden="true"])) {
             padding-left: var(--uc-vertical-collapsed-width);
