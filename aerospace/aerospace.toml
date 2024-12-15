@@ -20,7 +20,7 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 
-accordion-padding = 30
+accordion-padding = 40
 
 automatically-unhide-macos-hidden-apps = true
 
@@ -41,8 +41,8 @@ outer.right =      10
 
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+alt-ctrl-slash = 'layout tiles horizontal vertical'
+alt-ctrl-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -201,6 +201,10 @@ run = "move-node-to-workspace W"
 if.app-id = 'com.apple.finder'
 if.window-title-regex-substring = 'Quick Look|Copy'
 check-further-callbacks = false
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.objective-see.lulu'
 run = 'layout floating'
 
 [[on-window-detected]]

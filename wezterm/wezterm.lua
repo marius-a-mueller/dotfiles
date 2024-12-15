@@ -1,5 +1,4 @@
 -- TODO
--- rename tab: leader %
 -- rename workspace
 -- create workspace with name
 -- resize better
@@ -10,28 +9,24 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Mocha"
 
--- Spawn a fish shell in login mode
-config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
-
 config.font = wezterm.font("Iosevka Nerd Font Mono")
-config.font_size = 16
+config.font_size = 15
 
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 20
-config.front_end = "WebGpu"
 
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = {
-    {
-    mods = 'LEADER',
-    key = 'L',
-    action = wezterm.action.Multiple {
-      wezterm.action.ClearScrollback 'ScrollbackAndViewport',
-      wezterm.action.SendKey { key = 'L', mods = 'CTRL' },
-    },
-    },
+	{
+		mods = "LEADER",
+		key = "L",
+		action = wezterm.action.Multiple({
+			wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+			wezterm.action.SendKey({ key = "L", mods = "CTRL" }),
+		}),
+	},
 	{
 		mods = "LEADER",
 		key = "[",
@@ -71,6 +66,11 @@ config.keys = {
 		mods = "LEADER",
 		key = "-",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		mods = "LEADER",
+		key = ".",
+		action = wezterm.action.RotatePanes("Clockwise"),
 	},
 	{
 		mods = "LEADER",
