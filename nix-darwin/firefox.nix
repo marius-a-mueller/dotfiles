@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   programs = {
@@ -32,16 +32,7 @@
           }
         ];
 
-        settings = {
-          "dom.security.https_only_mode" = true;
-          "browser.download.panel.shown" = true;
-          "identity.fxaccounts.enabled" = false;
-          "signon.rememberSignons" = false;
-        };
-
-        userChrome = ''
-          /* some css */
-        '';
+        userChrome = builtins.readFile ./userChrome.css;
 
         # nix flake show "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"
         extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
@@ -56,7 +47,41 @@
           startpage-private-search
           zotero-connector
         ];
-
+        settings = {
+          "sidebar.revamp" = true;
+          "sidebar.verticalTabs" = true;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "apz.allow_zooming" = true;
+          "browser.aboutConfig.showWarning" = false;
+          "browser.tabs.warnOnClose" = true;
+          "browser.fullscreen.autohide" = false;
+          "browser.newtabpage.pinned" = "";
+          "browser.startup.homepage" = "https://startpage.com";
+          "browser.tabs.loadInBackground" = false;
+          "browser.urlbar.update2" = true;
+          "browser.urlbar.shortcuts.bookmarks" = false;
+          "browser.urlbar.shortcuts.tabs" = false;
+          "browser.urlbar.shortcuts.history" = false;
+          "dom.security.https_only_mode" = true;
+          "browser.download.panel.shown" = true;
+          "identity.fxaccounts.enabled" = false;
+          "extensions.pocket.enabled" = false;
+          "browser.formfill.enable" = false;
+          "signon.rememberSignons" = false;
+          "browser.search.hiddenOneOffs" =
+            lib.strings.concatStringsSep "," [
+              "Google"
+              "Amazon.com"
+              "Amazon.de"
+              "Bing"
+              "Chambers (UK)"
+              "DuckDuckGo"
+              "eBay"
+              "Wikipedia (en)"
+            ];
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+        };
       };
       policies = {
           DisableTelemetry = true;
@@ -124,9 +149,9 @@
       #   Preferences = {
       #     "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
       #     "extensions.pocket.enabled" = lock-false;
+            #     "browser.formfill.enable" = lock-false;
       #     "extensions.screenshots.disabled" = lock-true;
       #     "browser.topsites.contile.enabled" = lock-false;
-      #     "browser.formfill.enable" = lock-false;
       #     "browser.search.suggest.enabled" = lock-false;
       #     "browser.search.suggest.enabled.private" = lock-false;
       #     "browser.urlbar.suggest.searches" = lock-false;
