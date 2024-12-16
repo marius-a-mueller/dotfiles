@@ -113,12 +113,14 @@
           "Yomu" = 562211012;
           "Amphetamine" = 937984704;
           "Wireguard" = 1451685025;
+          "Shareful" = 1522267256;
         };
         onActivation.cleanup = "zap";
       };
 
-      fonts.packages = [
-        (pkgs.nerd-fonts.iosevka)
+      fonts.packages = with pkgs; [
+        nerd-fonts.fira-code
+        nerd-fonts.iosevka
       ];
 
       ids.gids.nixbld = 350;
