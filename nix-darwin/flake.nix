@@ -155,7 +155,7 @@
         ];
         dock.show-recents = false;
         loginwindow.GuestEnabled  = false;
-        loginwindow.LoginwindowText = "call 017664822713";
+        loginwindow.LoginwindowText = "emergency@archimarius.com";
         screencapture.location = "~/Downloads";
         NSGlobalDomain.AppleICUForce24HourTime = true;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
