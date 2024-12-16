@@ -123,6 +123,7 @@
         nerd-fonts.iosevka
       ];
 
+      programs.fish.enable = true;
       ids.gids.nixbld = 350;
 
       system.activationScripts.postUserActivation.text = ''

@@ -14,7 +14,6 @@
 
   imports = [
     ./firefox.nix
-    ./shell.nix
   ];
 
   home.file = {
