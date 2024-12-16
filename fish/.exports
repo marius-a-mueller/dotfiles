@@ -1,0 +1,10 @@
+set -gx ZETTELKASTEN_FOLDER "/Users/marius.mueller/notes"
+# Custom Exports
+set -gx BARTIB_FILE "$ZETTELKASTEN_FOLDER/11 - Sovanta/activities.bartib"
+set -gx EDITOR "nvim"
+set -gx SPACESHIP_KUBECTL_SHOW "true"
+set -gx PATH "$PATH:/Applications/WezTerm.app/Contents/MacOS"
+set -x PATH {$KREW_ROOT:-$HOME/.krew}/bin $PATH
+# fixes issue with tabbing in zsh (https://github.com/spaceship-prompt/spaceship-prompt/issues/726#issuecomment-534231326)
+set -gx LC_CTYPE en_US.UTF-8
+set -gx TERM screen-256color-bce
