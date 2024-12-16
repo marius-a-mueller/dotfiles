@@ -107,6 +107,7 @@
             "linearmouse"
             "anki"
             "spotify"
+            "maccy"
         ];
         masApps = {
           "Yomu" = 562211012;
