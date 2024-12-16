@@ -7,6 +7,9 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+-- Spawn a fish shell in login mode
+config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
+
 config.color_scheme = "Catppuccin Mocha"
 
 config.font = wezterm.font("Iosevka Nerd Font Mono")
@@ -15,6 +18,8 @@ config.font_size = 15
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 20
+
+config.front_end = "WebGpu"
 
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 5000 }
