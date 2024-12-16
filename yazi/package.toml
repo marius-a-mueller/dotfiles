@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "yazi-rs/plugins:smart-enter", rev = "62f0789" }, { use = "yazi-rs/plugins:max-preview", rev = "62f0789" }, { use = "yazi-rs/plugins:hide-preview", rev = "62f0789" }]
+
+[flavor]
+deps = []
