@@ -1,5 +1,3 @@
-# Dotfiles
-
 ## Intro
 
 Hi, here you can see my dotfiles. They are changing all the time and are of course customized to my taste but maybe you can find some ideas for your own config.
