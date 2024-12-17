@@ -14,10 +14,10 @@
 
   imports = [
     ./firefox.nix
-    ./shell.nix
   ];
 
   home.file = {
+    ".config/fish".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/fish";
     ".config/wezterm".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/wezterm";
     ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/nvim";
     ".config/aerospace".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/aerospace";
@@ -26,6 +26,8 @@
     ".config/qBittorrent".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/qBittorrent";
     ".config/nix-darwin".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/nix-darwin";
     ".config/nix".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/nix";
+    ".config/yazi".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/yazi";
+    ".config/eza".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/eza";
   };
 
   # fix for firefox

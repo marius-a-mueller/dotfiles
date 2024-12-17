@@ -107,19 +107,23 @@
             "linearmouse"
             "anki"
             "spotify"
+            "maccy"
         ];
         masApps = {
           "Yomu" = 562211012;
           "Amphetamine" = 937984704;
           "Wireguard" = 1451685025;
+          "Shareful" = 1522267256;
         };
         onActivation.cleanup = "zap";
       };
 
-      fonts.packages = [
-        (pkgs.nerd-fonts.iosevka)
+      fonts.packages = with pkgs; [
+        nerd-fonts.fira-code
+        nerd-fonts.iosevka
       ];
 
+      programs.fish.enable = true;
       ids.gids.nixbld = 350;
 
       system.activationScripts.postUserActivation.text = ''
@@ -151,7 +155,7 @@
         ];
         dock.show-recents = false;
         loginwindow.GuestEnabled  = false;
-        loginwindow.LoginwindowText = "call 017664822713";
+        loginwindow.LoginwindowText = "emergency@archimarius.com";
         screencapture.location = "~/Downloads";
         NSGlobalDomain.AppleICUForce24HourTime = true;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
