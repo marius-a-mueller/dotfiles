@@ -7,8 +7,18 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+function FileExists(name)
+	local f = io.open(name, "r")
+	return f ~= nil and io.close(f)
+end
+
 -- Spawn a fish shell in login mode
-config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
+if FileExists("/run/current-system/sw/bin/fish") then
+	config.default_prog = { "/run/current-system/sw/bin/fish", "-l" }
+	config.front_end = "WebGpu"
+elseif FileExists("/usr/local/bin/fish") then
+	config.default_prog = { "/usr/local/bin/fish", "-l" }
+end
 
 config.color_scheme = "Catppuccin Mocha"
 
@@ -19,14 +29,12 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 20
 
-config.front_end = "WebGpu"
-
 -- tmux
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 5000 }
 config.keys = {
 	{
 		mods = "LEADER",
-		key = "L",
+		key = ";",
 		action = wezterm.action.Multiple({
 			wezterm.action.ClearScrollback("ScrollbackAndViewport"),
 			wezterm.action.SendKey({ key = "L", mods = "CTRL" }),
