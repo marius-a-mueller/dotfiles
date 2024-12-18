@@ -30,7 +30,7 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
-          pkgs.bash
+          pkgs.bat
           pkgs.fish
           pkgs.neofetch
           pkgs.neovim
@@ -71,6 +71,11 @@
 
       homebrew = {
         enable = true;
+        onActivation = {
+          autoUpdate = true;
+          cleanup = "zap";
+          upgrade = true;
+        };
         brews = [
           "mas"
         ];
@@ -115,7 +120,6 @@
           "Wireguard" = 1451685025;
           "Shareful" = 1522267256;
         };
-        onActivation.cleanup = "zap";
       };
 
       fonts.packages = with pkgs; [
