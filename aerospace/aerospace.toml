@@ -112,10 +112,10 @@ cmd-m = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 [mode.resize.binding]
-h = 'resize width -50'
+h = 'resize width +50'
 j = 'resize height +50'
 k = 'resize height -50'
-l = 'resize width +50'
+l = 'resize width -50'
 b = 'balance-sizes'
 
 
@@ -153,7 +153,7 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-if.window-title-regex-substring = 'Picture-in-Picture'
+if.window-title-regex-substring = 'Picture-in-Picture|File Upload'
 check-further-callbacks = false
 run = 'layout floating'
 
