@@ -1,3 +1,5 @@
+abbr --add dr darwin-rebuild switch --flake ~/dotfiles/nix-darwin
+
 abbr --add --set-cursor gc git commit -m \'%\'
 abbr --add gs git status
 abbr --add ga git add
