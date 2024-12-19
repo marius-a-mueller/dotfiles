@@ -38,7 +38,7 @@
 }
 /*browser space adjustments*/
 @media (-moz-bool-pref: "sidebar.revamp") {
-    #tabbrowser-tabbox {
+    :root:not([inDOMFullscreen]) #tabbrowser-tabbox {
         margin-left: var(--uc-vertical-collapsed-width) !important;
     }
     #tabbrowser-tabbox[inFullscreen="true"] {

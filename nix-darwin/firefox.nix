@@ -55,6 +55,7 @@
           bitwarden
           vimium
           libredirect
+          old-reddit-redirect
           i-dont-care-about-cookies
           zotero-connector
         ];
@@ -113,6 +114,10 @@
           DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
           DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
           SearchBar = "unified"; # alternative: "separate"
+          FirefoxHome = {
+              SponsoredTopSites = false;
+              SponsoredPocket = false;
+          };
       };
     };
   };
