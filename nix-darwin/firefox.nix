@@ -16,12 +16,12 @@
               ];
             }];
 
-            icon = "https://raw.githubusercontent.com/simple-icons/simple-icons/refs/heads/develop/icons/startpage.svg";
+            icon = https://raw.githubusercontent.com/simple-icons/simple-icons/refs/heads/develop/icons/startpage.svg;
             definedAliases = [ "@s" ];
           };
           "Nix Packages" = {
             urls = [{
-              template = "https://search.nixos.org/packages";
+              template = "https://search.nixos.org/packages?channel=unstable";
               params = [
                 { name = "type"; value = "packages"; }
                 { name = "query"; value = "{searchTerms}"; }
@@ -58,6 +58,9 @@
           old-reddit-redirect
           i-dont-care-about-cookies
           zotero-connector
+          youtube-shorts-block
+          export-tabs-urls-and-titles omitted
+          darkreader
         ];
         settings = {
           "sidebar.revamp" = true;

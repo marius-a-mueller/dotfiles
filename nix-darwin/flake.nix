@@ -33,7 +33,12 @@
           pkgs.bat
           pkgs.fish
           pkgs.neofetch
+          pkgs.docker
+          # lightweight vm for docker runtime
+          pkgs.colima
           pkgs.neovim
+          pkgs.fastfetch
+          pkgs.nixos-generators
           pkgs.starship
           pkgs.gnupg
           pkgs.ansible
@@ -67,6 +72,9 @@
           pkgs.signal-desktop
           pkgs.rsync
           pkgs.fnm
+          pkgs.packer
+          pkgs.terraform
+          pkgs.terraform-providers.proxmox
         ];
 
       homebrew = {
