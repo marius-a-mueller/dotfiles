@@ -12,7 +12,9 @@ if status is-interactive
     set -g fish_key_bindings fish_vi_key_bindings
     # Control + d
     bind \cd 'exit'
-
+    bind -M insert \cp up-line
+    bind -M insert \cn down-line
+    bind -M insert \cl forward-char
 
     starship init fish | source
     for file in ~/.config/fish/.{functions*,exports*,aliases*}
