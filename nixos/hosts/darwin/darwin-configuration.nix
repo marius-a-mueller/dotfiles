@@ -1,7 +1,9 @@
 { pkgs, vars, ... }:
 
 {
-  # imports = (import ./modules);
+  imports = [
+    ./modules
+  ];
 
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";

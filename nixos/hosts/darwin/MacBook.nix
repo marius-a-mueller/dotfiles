@@ -1,9 +1,6 @@
-{ self, pkgs, config, ... }:
+{ self, pkgs, config, vars, ... }:
 {
-  # imports = [
-  #   ./modules
-  # ];
-  # firefox.enable = true;
+  firefox.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -141,7 +138,7 @@
       "${pkgs.zotero}/Applications/Zotero.app"
     ];
     dock.persistent-others = [
-      "/Users/marius/Downloads"
+      "/Users/${vars.user}/Downloads"
     ];
     CustomUserPreferences = {
       "com.apple.desktopservices" = {

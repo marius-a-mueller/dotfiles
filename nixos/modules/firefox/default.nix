@@ -15,7 +15,7 @@
         firefox = {
           enable = true;
           package = null;
-          profiles.marius = {
+          profiles.${vars.user} = {
             isDefault = true;
             search.engines = {
               "Startpage" = {
@@ -69,7 +69,7 @@
               i-dont-care-about-cookies
               zotero-connector
               youtube-shorts-block
-              export-tabs-urls-and-titles omitted
+              export-tabs-urls-and-titles
               darkreader
               floccus
             ];
