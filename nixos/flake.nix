@@ -69,14 +69,16 @@
         terminal = "wezterm";
         editor = "nvim";
       };
+      currentSystem = builtins.currentSystem;
+      pkgs = import nixpkgs { system = currentSystem; };
     in
     {
-      nixosConfigurations = (
-        import ./hosts/nixos {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager nur firefox-addons hyprland hyprspace plasma-manager vars; # Inherit inputs
-        }
-      );
+      # nixosConfigurations = (
+      #   import ./hosts/nixos {
+      #     inherit (nixpkgs) lib;
+      #     inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager nur firefox-addons hyprland hyprspace plasma-manager vars; # Inherit inputs
+      #   }
+      # );
 
       darwinConfigurations = (
         import ./hosts/darwin {
@@ -84,6 +86,16 @@
           inherit inputs nixpkgs nixpkgs-stable home-manager darwin firefox-addons vars;
         }
       );
+
+      devShells.aarch64-darwin.default = let
+          pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
+        in
+          pkgs.mkShell {
+            buildInputs = with pkgs; [ terraform cowsay ];
+            # shellHook = ''
+            #   export PATH=${pkgs.ps}/bin:$PATH
+            # '';
+          };
 
       # homeConfigurations = (
       #   import ./nix {

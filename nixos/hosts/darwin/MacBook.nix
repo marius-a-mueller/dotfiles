@@ -50,6 +50,7 @@
       pkgs.signal-desktop
       pkgs.rsync
       pkgs.fnm
+      pkgs.direnv
     ];
 
   homebrew = {
@@ -188,17 +189,7 @@
   system.stateVersion = 4;
 
   # The platform the configuration will be used on.
-  nixpkgs.hostPlatform = "aarch64-darwin";
-
-  programs.bash = {
-    interactiveShellInit = ''
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-      then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-      fi
-    '';
-  };
+  # nixpkgs.hostPlatform = "aarch64-darwin";
 
   home-manager.backupFileExtension = "backup";
   nix.configureBuildUsers = true;
