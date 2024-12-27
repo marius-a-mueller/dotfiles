@@ -5,3 +5,5 @@ containers
 .direnv/
 .direnv
 credentials.auto.tfvars
+configstore
+.terraform
