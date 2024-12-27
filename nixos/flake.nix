@@ -7,6 +7,11 @@
       nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
       nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
+      disko = {
+        url = "github:nix-community/disko/latest";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       # User Environment Manager
       home-manager = {
         url = "github:nix-community/home-manager";
@@ -61,7 +66,7 @@
       };
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, firefox-addons, home-manager-stable, darwin, nur, nixgl, hyprland, hyprspace, plasma-manager, ... }: # Function telling flake which inputs to use
+  outputs = inputs @ { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, disko, firefox-addons, home-manager-stable, darwin, nur, nixgl, hyprland, hyprspace, plasma-manager, ... }: # Function telling flake which inputs to use
     let
       # Variables Used In Flake
       vars = {
@@ -73,12 +78,12 @@
       pkgs = import nixpkgs { system = currentSystem; };
     in
     {
-      # nixosConfigurations = (
-      #   import ./hosts/nixos {
-      #     inherit (nixpkgs) lib;
-      #     inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager nur firefox-addons hyprland hyprspace plasma-manager vars; # Inherit inputs
-      #   }
-      # );
+      nixosConfigurations = (
+        import ./hosts/nixos {
+          inherit (nixpkgs) lib;
+          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager disko nur firefox-addons hyprland hyprspace plasma-manager vars; # Inherit inputs
+        }
+      );
 
       darwinConfigurations = (
         import ./hosts/darwin {
@@ -91,10 +96,9 @@
           pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
         in
           pkgs.mkShell {
-            buildInputs = with pkgs; [ terraform cowsay ];
-            # shellHook = ''
-            #   export PATH=${pkgs.ps}/bin:$PATH
-            # '';
+            buildInputs = with pkgs; [
+              (terraform.withPlugins (p: [ p.null p.external p.proxmox ]))
+            ];
           };
 
       # homeConfigurations = (

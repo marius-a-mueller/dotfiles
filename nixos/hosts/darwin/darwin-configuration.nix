@@ -51,6 +51,7 @@
       ".config/nix".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/nix";
       ".config/yazi".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/yazi";
       ".config/eza".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/eza";
+      ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "/Users/marius/dotfiles/ghostty";
     };
     home.sessionPath = [
       "/run/current-system/sw/bin"

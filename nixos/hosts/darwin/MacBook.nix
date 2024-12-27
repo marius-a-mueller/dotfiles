@@ -68,7 +68,7 @@
         "raspberry-pi-imager"
         "android-file-transfer"
         "appcleaner"
-        "applepi-baker"
+        "balenaetcher"
         "coconutbattery"
         "coteditor"
         "daisydisk"
@@ -97,6 +97,7 @@
         "spotify"
         "maccy"
         "stats"
+        "tunnelblick"
     ];
     masApps = {
       "Yomu" = 562211012;

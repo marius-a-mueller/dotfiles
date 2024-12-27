@@ -2,3 +2,6 @@
 .zcompdump*
 linearmouse
 containers
+.direnv/
+.direnv
+credentials.auto.tfvars
