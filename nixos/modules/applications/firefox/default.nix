@@ -3,8 +3,8 @@
 {
   options = {
     firefox.enable = lib.mkEnableOption "enables firefox";
-  };
 
+  };
   config = lib.mkIf config.firefox.enable {
     home-manager.users.${vars.user} = {
       home.sessionVariables = {

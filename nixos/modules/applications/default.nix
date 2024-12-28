@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   imports = [
-    ./applications
+    ./firefox
+    ./steam
   ];
 }
