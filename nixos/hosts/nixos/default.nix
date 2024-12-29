@@ -1,5 +1,4 @@
-{ inputs, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, disko, nur, hyprland, hyprspace, plasma-manager, jovian, vars, ... }:
-
+{ inputs, ... }
 let
   system = "x86_64-linux";
 
@@ -19,7 +18,7 @@ in
   couchcomputer = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable jovian vars;
+      inherit inputs pkgs system vars;
       host = {
         hostName = "couchcomputer";
       };
@@ -27,8 +26,7 @@ in
     modules = [
       ./couchcomputer
       ./configuration.nix
-      jovian.nixosModules.default
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -39,7 +37,7 @@ in
   nixbox = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit inputs pkgs system vars;
       host = {
         hostName = "nixbox";
       };
@@ -47,7 +45,7 @@ in
     modules = [
       ./nixbox
       ./configuration.nix
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
@@ -58,7 +56,7 @@ in
   nixflix = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit inputs pkgs system vars;
       host = {
         hostName = "nixflix";
       };
@@ -67,7 +65,7 @@ in
       disko.nixosModules.disko
       ./nixflix
       ./configuration.nix
-      home-manager.nixosModules.home-manager
+      inputs.home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
