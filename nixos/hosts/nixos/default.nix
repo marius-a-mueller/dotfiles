@@ -16,6 +16,25 @@ let
   lib = nixpkgs.lib;
 in
 {
+  couchcomputer = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs system stable vars;
+      host = {
+        hostName = "couchcomputer";
+      };
+    };
+    modules = [
+      ./couchcomputer
+      ./configuration.nix
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
+
   nixflix = lib.nixosSystem {
     inherit system;
     specialArgs = {
