@@ -13,7 +13,6 @@
     };
 
     environment.systemPackages = with pkgs; [
-      steam
       mangohud # performance monitoring
       protonup-qt # multiple proton versions
       lutris

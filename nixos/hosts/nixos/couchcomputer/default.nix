@@ -63,6 +63,12 @@
     #media-session.enable = true;
   };
 
+  environment = {
+    systemPackages = with pkgs; [
+      firefox
+    ];
+  };
+
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "${vars.user}";
