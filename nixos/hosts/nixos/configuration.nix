@@ -5,6 +5,13 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
+  home-manager.users.${vars.user}.imports = [
+    (import ./home-manager.nix {
+      inherit vars;
+    })
+  ];
+  home-manager.backupFileExtension = "backup";
+
   networking.hostName = lib.mkDefault "nixos";
   # Enable networking
   networking.networkmanager.enable = true;
@@ -112,9 +119,4 @@
     # };
     stateVersion = lib.mkDefault "22.05";
   };
-
-  home-manager.backupFileExtension = "backup";
-  home-manager.users.${vars.user}.imports = [
-    ./home-manager.nix
-  ];
 }
