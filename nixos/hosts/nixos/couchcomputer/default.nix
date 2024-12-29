@@ -19,7 +19,7 @@
   # https://medium.com/@notquitethereyet_/gaming-on-nixos-%EF%B8%8F-f98506351a24
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open= true;
+  hardware.nvidia.open = true;
   # nix shell nixpkgs#pciutils -c lspci | grep VGA
   hardware.nvidia.prime = {
     offload = {
@@ -27,7 +27,7 @@
       enableOffloadCmd = true; # Lets you use `nvidia-offload %command%` in steam
     };
 
-    # intelBusId = "PCI:00:02:0";
+    intelBusId = "PCI:00:02:0";
     # amdgpuBusId = "PCI:0:0:0";
     nvidiaBusId = "PCI:01:00:0";
   };
