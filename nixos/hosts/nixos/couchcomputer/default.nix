@@ -2,7 +2,11 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../../modules
   ];
+
+  firefox.enable = true;
+  steam.enable = true;
 
   # https://medium.com/@notquitethereyet_/gaming-on-nixos-%EF%B8%8F-f98506351a24
   services.xserver.videoDrivers = ["nvidia"];
