@@ -4,6 +4,18 @@
     ./hardware-configuration.nix
   ];
 
+  programs = {
+    fish.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      vimAlias = true;
+      viAlias = true;
+    };
+    yazi.enable = true;
+    starship.enable = true;
+  }
+
   environment = {
     systemPackages = with pkgs; [
       (terraform.withPlugins (p: [ p.null p.external p.proxmox ]))
