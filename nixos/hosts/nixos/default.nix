@@ -60,7 +60,7 @@ in
       };
     };
     modules = [
-      disko.nixosModules.disko
+      # disko.nixosModules.disko
       ./nixflix
       ./configuration.nix
       inputs.home-manager.nixosModules.home-manager
