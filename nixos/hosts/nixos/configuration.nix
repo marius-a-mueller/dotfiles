@@ -9,8 +9,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  security.sudo.wheelNeedsPassword = false; # Don't ask for password
-
   services.qemuGuest.enable = lib.mkDefault true; # Enable QEMU Guest for Proxmox
   services.openssh = {
     enable = true;
