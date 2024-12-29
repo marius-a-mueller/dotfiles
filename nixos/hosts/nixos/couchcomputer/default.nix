@@ -6,7 +6,16 @@
   ];
 
   firefox.enable = true;
-  steam.enable = true;
+
+  jovian = {
+    steam = {
+      updater.splash = "vendor";
+      enable = true;
+      autoStart = true;
+      user = "${vars.user}";
+      desktopSession = "plasma";
+    };
+  };
 
   # https://medium.com/@notquitethereyet_/gaming-on-nixos-%EF%B8%8F-f98506351a24
   services.xserver.videoDrivers = ["nvidia"];
@@ -19,7 +28,7 @@
       enableOffloadCmd = true; # Lets you use `nvidia-offload %command%` in steam
     };
 
-    intelBusId = "PCI:00:02:0";
+    # intelBusId = "PCI:00:02:0";
     # amdgpuBusId = "PCI:0:0:0";
     nvidiaBusId = "PCI:01:00:0";
   };

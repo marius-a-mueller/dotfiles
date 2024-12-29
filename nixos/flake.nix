@@ -64,9 +64,14 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.home-manager.follows = "nixpkgs";
       };
+
+      jovian = {
+        url = "github:Jovian-Experiments/Jovian-NixOS";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, disko, firefox-addons, home-manager-stable, darwin, nur, nixgl, hyprland, hyprspace, plasma-manager, ... }: # Function telling flake which inputs to use
+  outputs = inputs @ { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, disko, firefox-addons, home-manager-stable, darwin, nur, nixgl, hyprland, hyprspace, plasma-manager, jovian, ... }: # Function telling flake which inputs to use
     let
       # Variables Used In Flake
       vars = {
@@ -81,7 +86,7 @@
       nixosConfigurations = (
         import ./hosts/nixos {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager disko nur firefox-addons hyprland hyprspace plasma-manager vars; # Inherit inputs
+          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager disko nur firefox-addons hyprland hyprspace plasma-manager jovian vars; # Inherit inputs
         }
       );
 

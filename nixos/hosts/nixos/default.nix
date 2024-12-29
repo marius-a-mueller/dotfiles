@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, disko, nur, hyprland, hyprspace, plasma-manager, vars, ... }:
+{ inputs, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, disko, nur, hyprland, hyprspace, plasma-manager, jovian, vars, ... }:
 
 let
   system = "x86_64-linux";
@@ -19,7 +19,7 @@ in
   couchcomputer = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit inputs system stable jovian vars;
       host = {
         hostName = "couchcomputer";
       };
