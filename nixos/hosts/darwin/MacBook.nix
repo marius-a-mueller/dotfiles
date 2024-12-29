@@ -10,7 +10,6 @@
     [
       pkgs.bat
       pkgs.fish
-      pkgs.neofetch
       pkgs.docker
       # lightweight vm for docker runtime
       pkgs.colima

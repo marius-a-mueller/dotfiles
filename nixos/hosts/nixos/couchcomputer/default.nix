@@ -60,8 +60,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "${vars.user}";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "${vars.user}";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -70,5 +70,4 @@
   # networking.firewall.enable = false;
 
   system.stateVersion = lib.mkForce "24.11"; # Did you read the comment?
-
 }
