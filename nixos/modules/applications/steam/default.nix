@@ -13,13 +13,13 @@
           gamescopeSession.enable = true;
         };
       };
-      environment.systemPackages = with pkgs; [
-        mangohud # performance monitoring
-        protonup-qt # multiple proton versions
-        lutris
-        bottles
-        heroic # use proton for non steam games
-      ];
     };
+    environment.systemPackages = with pkgs; [
+      mangohud # performance monitoring
+      protonup-qt # multiple proton versions
+      lutris
+      bottles
+      heroic # use proton for non steam games
+    ];
   };
 }
