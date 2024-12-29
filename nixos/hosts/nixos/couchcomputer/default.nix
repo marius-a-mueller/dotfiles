@@ -5,16 +5,8 @@
     ../../../modules
   ];
 
+  steam.enable = true;
   firefox.enable = true;
-
-  jovian = {
-    steam = {
-      updater.splash = "vendor";
-      enable = true;
-      user = "${vars.user}";
-      desktopSession = "plasma";
-    };
-  };
 
   # https://medium.com/@notquitethereyet_/gaming-on-nixos-%EF%B8%8F-f98506351a24
   services.xserver.videoDrivers = ["nvidia"];
