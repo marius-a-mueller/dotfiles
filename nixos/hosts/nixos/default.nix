@@ -27,6 +27,7 @@ in
     modules = [
       ./couchcomputer
       ./configuration.nix
+      jovian.nixosModules.default
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
