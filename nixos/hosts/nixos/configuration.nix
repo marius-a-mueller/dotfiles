@@ -10,11 +10,6 @@
   networking.networkmanager.enable = true;
 
   services.qemuGuest.enable = lib.mkDefault true; # Enable QEMU Guest for Proxmox
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-  };
   programs.ssh.startAgent = true;
 
   users.users.${vars.user} = {
@@ -83,6 +78,10 @@
       extraConfig = ''
         HostKeyAlgorithms +ssh-rsa
       '';
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
     };
   };
 
