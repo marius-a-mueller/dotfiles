@@ -14,7 +14,7 @@
   };
   home-manager.backupFileExtension = "backup";
 
-  networking.hostName = lib.mkDefault "nixos";
+  networking.hostName = lib.mkDefault "${host.hostName}";
   # Enable networking
   networking.networkmanager.enable = true;
 
