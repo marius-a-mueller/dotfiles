@@ -1,15 +1,17 @@
 { lib, config, pkgs, stable, inputs, vars, modulesPath, ... }:
-
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  home-manager.users.${vars.user}.imports = [
-    (import ./home-manager.nix {
-      inherit vars;
-    })
-  ];
+  home-manager.users.${vars.user} = { config, ...}:
+  {
+    imports = [
+      (import ./home-manager.nix {
+        inherit vars config;
+      })
+    ];
+  };
   home-manager.backupFileExtension = "backup";
 
   networking.hostName = lib.mkDefault "nixos";
@@ -69,12 +71,17 @@
     };
     systemPackages = with pkgs; [
       # Terminal
-      btop # Resource Manager
-      cifs-utils # Samba
-      coreutils # GNU Utilities
-      git # Version Control
-      lshw # Hardware Config
-      wget # Retriever
+      neovim
+      fish
+      eza
+      yazi
+      starship
+      btop
+      cifs-utils
+      coreutils
+      git
+      lshw
+      wget
     ];
   };
 
