@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, vars, lib, ... }:
 let
   system = "x86_64-linux";
 
@@ -11,8 +11,6 @@ let
     inherit system;
     config.allowUnfree = true;
   };
-
-  lib = inputs.nixpkgs.lib;
 in
 {
   couchcomputer = lib.nixosSystem {
