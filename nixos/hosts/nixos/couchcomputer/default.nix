@@ -1,4 +1,4 @@
-{ lib, vars, jovian, ...}:
+{ lib, pkgs, vars, jovian, ...}:
 {
   imports = [
     ./hardware-configuration.nix
