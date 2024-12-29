@@ -2,23 +2,23 @@
 let
   system = "x86_64-linux";
 
-  pkgs = import nixpkgs {
+  pkgs = import inputs.nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
 
-  stable = import nixpkgs-stable {
+  stable = import inputs.nixpkgs-stable {
     inherit system;
     config.allowUnfree = true;
   };
 
-  lib = nixpkgs.lib;
+  lib = inputs.nixpkgs.lib;
 in
 {
   couchcomputer = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs pkgs system vars;
+      inherit inputs pkgs lib system vars;
       host = {
         hostName = "couchcomputer";
       };
@@ -37,7 +37,7 @@ in
   nixbox = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs pkgs system vars;
+      inherit inputs pkgs lib system vars;
       host = {
         hostName = "nixbox";
       };
@@ -56,7 +56,7 @@ in
   nixflix = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs pkgs system vars;
+      inherit inputs pkgs lib system vars;
       host = {
         hostName = "nixflix";
       };
