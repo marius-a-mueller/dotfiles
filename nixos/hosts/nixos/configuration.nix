@@ -88,6 +88,7 @@
   nix = {
     settings = {
       auto-optimise-store = true;
+      trusted-users = [ "root" "@wheel" ]; # Allow remote updates
     };
     gc = {
       automatic = true;
@@ -102,7 +103,6 @@
       keep-derivations      = true
     '';
   };
-  trusted-users = [ "root" "@wheel" ]; # Allow remote updates
   nixpkgs.config.allowUnfree = true;
 
   system = {
