@@ -64,14 +64,9 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.home-manager.follows = "nixpkgs";
       };
-
-      jovian = {
-        url = "github:Jovian-Experiments/Jovian-NixOS";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, disko, firefox-addons, home-manager-stable, darwin, nur, nixgl, hyprland, hyprspace, plasma-manager, jovian, ... }: # Function telling flake which inputs to use
+  outputs = inputs @ { ... }:
     let
       # Variables Used In Flake
       vars = {
@@ -80,25 +75,25 @@
         editor = "nvim";
       };
       currentSystem = builtins.currentSystem;
-      pkgs = import nixpkgs { system = currentSystem; };
+      pkgs = import inputs.nixpkgs { system = currentSystem; };
     in
     {
       nixosConfigurations = (
         import ./hosts/nixos {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager disko nur firefox-addons hyprland hyprspace plasma-manager jovian vars; # Inherit inputs
+          inherit (inputs.nixpkgs) lib;
+          inherit inputs vars;
         }
       );
 
       darwinConfigurations = (
         import ./hosts/darwin {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable home-manager darwin firefox-addons vars;
+          inherit (inputs.nixpkgs) lib;
+          inherit inputs vars;
         }
       );
 
       devShells.aarch64-darwin.default = let
-          pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
+          pkgs = import inputs.nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
         in
           pkgs.mkShell {
             buildInputs = with pkgs; [

@@ -1,6 +1,6 @@
 { lib, ... }:
 {
   imports = [
-    ../../../modules
+    ../../../modules/applications/firefox
   ];
 }

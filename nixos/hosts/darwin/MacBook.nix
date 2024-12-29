@@ -1,55 +1,53 @@
-{ self, pkgs, config, vars, ... }:
+{ pkgs, lib, vars, config, ... }:
 {
   firefox.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    [
-      pkgs.bat
-      pkgs.fish
-      pkgs.docker
+    with pkgs; [
+      bat
+      fish
+      docker
       # lightweight vm for docker runtime
-      pkgs.colima
-      pkgs.neovim
-      pkgs.fastfetch
-      pkgs.nixos-generators
-      pkgs.starship
-      pkgs.gnupg
-      pkgs.ansible
-      pkgs.bartib
-      pkgs.eza
-      pkgs.ffmpeg
-      pkgs.fd
-      pkgs.git
-      pkgs.krew
-      pkgs.jq
-      pkgs.kubernetes-helm
-      pkgs.kubectl
-      pkgs.pandoc
-      pkgs.python314
-      pkgs.gnused
-      pkgs.k9s
-      pkgs.go
-      pkgs.lua
-      pkgs.ncdu
-      pkgs.ripgrep
-      pkgs.zoxide
-      pkgs.wget
-      pkgs.yazi
-      pkgs.yt-dlp
-      pkgs.obsidian
-      pkgs.aerospace
-      pkgs.cyberduck
-      pkgs.fzf
-      pkgs.zotero
-      pkgs.spotify
-      pkgs.signal-desktop
-      pkgs.rsync
-      pkgs.fnm
-      pkgs.direnv
+      colima
+      neovim
+      fastfetch
+      nixos-generators
+      starship
+      gnupg
+      ansible
+      bartib
+      eza
+      ffmpeg
+      fd
+      git
+      krew
+      jq
+      kubernetes-helm
+      kubectl
+      pandoc
+      python314
+      gnused
+      k9s
+      go
+      lua
+      ncdu
+      ripgrep
+      zoxide
+      wget
+      yazi
+      yt-dlp
+      obsidian
+      aerospace
+      cyberduck
+      fzf
+      zotero
+      spotify
+      signal-desktop
+      rsync
+      fnm
+      direnv
     ];
 
   homebrew = {
@@ -111,7 +109,6 @@
     nerd-fonts.iosevka
   ];
 
-  programs.fish.enable = true;
   ids.gids.nixbld = 350;
 
   system.activationScripts.postUserActivation.text = ''

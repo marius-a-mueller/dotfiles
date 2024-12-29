@@ -1,13 +1,13 @@
-{ inputs, nixpkgs, nixpkgs-stable, darwin, home-manager, lib, vars, ... }:
+{ inputs, lib, vars, ... }:
 
 let
   systemConfig = system: {
     system = system;
-    pkgs = import nixpkgs {
+    pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
     };
-    stable = import nixpkgs-stable {
+    stable = import inputs.nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
     };
@@ -18,13 +18,13 @@ in
     let
       inherit (systemConfig "aarch64-darwin") system pkgs stable;
     in
-    darwin.lib.darwinSystem {
+    inputs.darwin.lib.darwinSystem {
       inherit system;
-      specialArgs = { inherit inputs system pkgs stable vars lib; };
+      specialArgs = { inherit inputs pkgs vars lib; };
       modules = [
         ./darwin-configuration.nix
         ./MacBook.nix
-        home-manager.darwinModules.home-manager
+        inputs.home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
