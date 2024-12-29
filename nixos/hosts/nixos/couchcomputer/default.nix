@@ -11,7 +11,6 @@
     steam = {
       updater.splash = "vendor";
       enable = true;
-      autoStart = true;
       user = "${vars.user}";
       desktopSession = "plasma";
     };
