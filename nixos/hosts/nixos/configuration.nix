@@ -82,6 +82,7 @@
       git
       lshw
       wget
+      gcc
     ];
   };
 
