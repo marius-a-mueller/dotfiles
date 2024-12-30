@@ -82,7 +82,6 @@
       git
       lshw
       wget
-      libgcc
     ];
   };
 
