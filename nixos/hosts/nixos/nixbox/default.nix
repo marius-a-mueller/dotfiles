@@ -19,6 +19,7 @@
   environment = {
     systemPackages = with pkgs; [
       (terraform.withPlugins (p: [ p.null p.external p.proxmox ]))
+      zig
     ];
   };
   networking.networkmanager.ethernet.macAddress = "bc:24:11:36:c7:8e";
