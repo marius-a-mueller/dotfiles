@@ -44,6 +44,7 @@
       ];
       casks = [
         "android-file-transfer"
+        "angry-ip-scanner"
         "balenaetcher"
         "coconutbattery"
         "coteditor"
