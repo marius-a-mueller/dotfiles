@@ -16,4 +16,3 @@ abbr --add --set-cursor btsit bartib start -p \'sit\' -d \'%\'
 abbr --add --set-cursor btsovanta bartib start -p \'sovanta\' -d \'%\'
 abbr --add --set-cursor btcalm bartib start -p \'calm\' -d \'%\'
 abbr --add --set-cursor btccd bartib start -p \'ccd\' -d \'%\'
-
