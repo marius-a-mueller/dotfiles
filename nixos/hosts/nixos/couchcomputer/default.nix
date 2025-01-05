@@ -84,6 +84,11 @@
   security.polkit.enable = true;
 
   home-manager.users.${vars.user} = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      mako
+      wl-clipboard
+      shotman
+    ];
     wayland.windowManager.sway = {
       enable = true;
       # config = rec {
@@ -93,11 +98,6 @@
       #     };
       #   };
       # };
-      home.packages = with pkgs; [
-        mako
-        wl-clipboard
-        shotman
-      ];
     };
   };
 
