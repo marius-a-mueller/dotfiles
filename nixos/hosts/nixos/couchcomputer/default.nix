@@ -80,5 +80,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = lib.mkForce "24.11"; # Did you read the comment?
+  system.stateVersion = lib.mkForce "25.05"; # Did you read the comment?
 }
