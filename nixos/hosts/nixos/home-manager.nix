@@ -17,5 +17,10 @@
   };
   programs = {
     home-manager.enable = true;
+    git = {
+      enable = true;
+      userName  = "Marius Müller";
+      userEmail = "marius@mindful-student.net";
+    };
   };
 }
