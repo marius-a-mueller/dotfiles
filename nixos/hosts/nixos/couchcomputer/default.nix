@@ -83,7 +83,7 @@
 
   security.polkit.enable = true;
 
-  home-manager.users.theNameOfTheUser = { pkgs, ... }: {
+  home-manager.users.${vars.user} = { pkgs, ... }: {
     wayland.windowManager.sway = {
       enable = true;
       # config = rec {
