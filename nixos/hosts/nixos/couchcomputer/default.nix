@@ -8,12 +8,21 @@
   steam.enable = true;
   firefox.enable = true;
   wireguard.enable = true;
-  greetd.enable = true;
+  greetd.enable = false;
+  wayland.enable = true;
+  hyprland.enable = true;
 
-  # https://medium.com/@notquitethereyet_/gaming-on-nixos-%EF%B8%8F-f98506351a24
-  services.xserver.videoDrivers = ["nvidia"];
+  # nvidia
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.package = pkgs.linuxKernel.packages.linux_6_6.nvidia_x11;
   hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = true;
+  # hardware.nvidia.prime.offload.enable = true;
+  environment.systemPackages = with pkgs; [ nvidia-docker ];
+  # something broke though
+  # services.xserver.dpi = 110;
+  # environment.variables = { GDK_SCALE = "0.3"; };
+
+  # hardware.nvidia.open = true;
   # nix shell nixpkgs#pciutils -c lspci | grep VGA
   hardware.nvidia.prime = {
     offload = {
@@ -50,20 +59,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   environment = {
     systemPackages = with pkgs; [
@@ -82,26 +77,6 @@
   # networking.firewall.enable = false;
 
   security.polkit.enable = true;
-
-  home-manager.users.${vars.user} = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      mako
-      wl-clipboard
-      shotman
-    ];
-    wayland.windowManager.sway = {
-      enable = true;
-      config = rec {
-        modifier = "Mod4";
-        # output = {
-        #   "Virtual-1" = {
-        #     mode = "1920x1080@60Hz";
-        #   };
-        # };
-      };
-      extraOptions = [ "--unsupported-gpu" ];
-    };
-  };
 
   system.stateVersion = lib.mkForce "25.05"; # Did you read the comment?
 }
