@@ -1,7 +1,6 @@
 { lib, ... }:
 {
   imports = [
-    ./applications
-    ./desktop
+    ./greetd.nix
   ];
 }

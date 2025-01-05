@@ -8,6 +8,7 @@
   steam.enable = true;
   firefox.enable = true;
   wireguard.enable = true;
+  greetd.enable = true;
 
   # https://medium.com/@notquitethereyet_/gaming-on-nixos-%EF%B8%8F-f98506351a24
   services.xserver.videoDrivers = ["nvidia"];
@@ -29,18 +30,18 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # # Enable the X11 windowing system.
+  # services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # # Enable the KDE Plasma Desktop Environment.
+  # services.displayManager.sddm.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "";
-  };
+  # # Configure keymap in X11
+  # services.xserver.xkb = {
+  #   layout = "de";
+  #   variant = "";
+  # };
 
   # Configure console keymap
   console.keyMap = lib.mkForce "de";
@@ -71,14 +72,34 @@
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "${vars.user}";
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "${vars.user}";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  security.polkit.enable = true;
+
+  home-manager.users.theNameOfTheUser = { pkgs, ... }: {
+    wayland.windowManager.sway = {
+      enable = true;
+      # config = rec {
+      #   output = {
+      #     "Virtual-1" = {
+      #       mode = "1920x1080@60Hz";
+      #     };
+      #   };
+      # };
+      home.packages = with pkgs; [
+        mako
+        wl-clipboard
+        shotman
+      ];
+    };
+  }
 
   system.stateVersion = lib.mkForce "25.05"; # Did you read the comment?
 }
