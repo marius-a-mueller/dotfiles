@@ -16,7 +16,7 @@
       mangohud # performance monitoring
       protonup-qt # multiple proton versions
       lutris
-      bottles
+      # bottles
       heroic # use proton for non steam games
     ];
   };
