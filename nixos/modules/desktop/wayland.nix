@@ -1,4 +1,4 @@
-{ ... }: {
+{ lib, config, ... }: {
   options = {
     wayland.enable = lib.mkEnableOption "enables wayland";
   };
