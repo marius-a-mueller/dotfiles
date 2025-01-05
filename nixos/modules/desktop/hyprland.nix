@@ -11,6 +11,11 @@
     # };
 
     home-manager.users.${vars.user} = { pkgs, ... }: {
+      wayland.windowManager.hyprland = {
+        enable = true;
+        # set the flake package
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      };
       home.sessionVariables.NIXOS_OZONE_WL = "1";
       home.packages = with pkgs; [
         # utils
@@ -18,11 +23,6 @@
         brightnessctl # Control background
         playerctl # Control audio
 
-        wayland.windowManager.hyprland = {
-          enable = true;
-          # set the flake package
-          package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-        };
         eww
         wl-clipboard
         rofi
