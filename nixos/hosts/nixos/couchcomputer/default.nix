@@ -72,8 +72,8 @@
   };
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "${vars.user}";
+  # services.displayManager.autoLogin.enable = true;
+  # services.displayManager.autoLogin.user = "${vars.user}";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -91,13 +91,14 @@
     ];
     wayland.windowManager.sway = {
       enable = true;
-      # config = rec {
-      #   output = {
-      #     "Virtual-1" = {
-      #       mode = "1920x1080@60Hz";
-      #     };
-      #   };
-      # };
+      config = rec {
+        modifier = "Mod4";
+        # output = {
+        #   "Virtual-1" = {
+        #     mode = "1920x1080@60Hz";
+        #   };
+        # };
+      };
     };
   };
 
