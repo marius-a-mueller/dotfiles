@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, vars, ... }:
 {
   options = {
     greetd.enable = lib.mkEnableOption "enables greetd";
