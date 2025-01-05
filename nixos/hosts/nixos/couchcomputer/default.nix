@@ -72,8 +72,8 @@
   };
 
   # Enable automatic login for the user.
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "${vars.user}";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "${vars.user}";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
