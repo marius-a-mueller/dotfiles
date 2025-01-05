@@ -99,6 +99,7 @@
         #   };
         # };
       };
+      extraOptions = [ "--unsupported-gpu" ];
     };
   };
 
