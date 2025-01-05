@@ -79,10 +79,15 @@
       btop
       cifs-utils
       coreutils
-      git
       lshw
       wget
     ];
+  };
+
+  programs.git = {
+    enable = true;
+    userName  = "Marius Müller";
+    userEmail = "marius@mindful-student.net";
   };
 
   services = {
