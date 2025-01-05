@@ -21,7 +21,8 @@
   # services.xserver.dpi = 110;
   # environment.variables = { GDK_SCALE = "0.3"; };
 
-  # hardware.nvidia.open = true;
+  # You must configure `hardware.nvidia.open` on NVIDIA driver versions >= 560.
+  hardware.nvidia.open = true;
   # nix shell nixpkgs#pciutils -c lspci | grep VGA
   hardware.nvidia.prime = {
     offload = {
