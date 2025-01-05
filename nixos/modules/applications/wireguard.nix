@@ -4,6 +4,6 @@
   };
 
   config = lib.mkIf config.wireguard.enable {
-    networking.wg-quick.interfaces.wg0.configFile = "/secrets/wg0.conf"
+    networking.wg-quick.interfaces.wg0.configFile = "/secrets/wg0.conf";
   };
 }
