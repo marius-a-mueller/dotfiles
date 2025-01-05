@@ -17,7 +17,7 @@
       protonup-qt # multiple proton versions
       lutris
       # bottles
-      heroic # use proton for non steam games
+      # heroic # use proton for non steam games
     ];
   };
 }
