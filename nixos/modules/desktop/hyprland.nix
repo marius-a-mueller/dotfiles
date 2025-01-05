@@ -11,15 +11,18 @@
     # };
 
     home-manager.users.${vars.user} = { pkgs, ... }: {
+      home.sessionVariables.NIXOS_OZONE_WL = "1";
       home.packages = with pkgs; [
         # utils
         acpi # hardware states
         brightnessctl # Control background
         playerctl # Control audio
 
-        (inputs.hyprland.packages."x86_64-linux".hyprland.override {
-          enableNvidiaPatches = true;
-        })
+        wayland.windowManager.hyprland = {
+          enable = true;
+          # set the flake package
+          package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        };
         eww
         wl-clipboard
         rofi
