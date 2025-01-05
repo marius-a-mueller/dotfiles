@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, config, ... }: {
   options = {
     wireguard.enable = lib.mkEnableOption "enables wireguard";
   };
