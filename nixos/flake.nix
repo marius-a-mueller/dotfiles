@@ -97,7 +97,8 @@
         in
           pkgs.mkShell {
             buildInputs = with pkgs; [
-              (terraform.withPlugins (p: [ p.null p.external p.proxmox ]))
+              # (terraform.withPlugins (p: [ p.null p.external p.proxmox ]))
+              nixos-rebuild
             ];
           };
 
