@@ -3,5 +3,6 @@
   imports = [
     ./applications
     ./desktop
+    ./services
   ];
 }

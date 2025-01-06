@@ -32,6 +32,26 @@ in
     ];
   };
 
+  helms-deep = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs pkgs lib system vars;
+      host = {
+        hostName = "helms-deep";
+      };
+    };
+    modules = [
+      ./helms-deep
+      ./configuration.nix
+      inputs.disko.nixosModules.disko
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
+
   nixbox = lib.nixosSystem {
     inherit system;
     specialArgs = {
