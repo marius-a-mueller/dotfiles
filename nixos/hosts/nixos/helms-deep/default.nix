@@ -1,5 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 {
+  # Provisioning
+  # nix run github:nix-community/nixos-anywhere -- --flake .#helms-deep --target-host marius@<ip address> --build-on-remote
+  # Upgrading
+  # nixos-rebuild switch --flake .#helms-deep --target-host "root@<ip address>"
+
   imports = [
     ./hardware-configuration.nix
     ../../../modules/disko
@@ -19,5 +24,5 @@
 
   disko.enable = true;
 
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11";
 }
