@@ -1,7 +1,8 @@
-{ pkgs, lib, vars, config, ... }:
+{ pkgs, lib, vars, config, inputs, ... }:
 {
   config = {
     firefox.enable = true;
+
     environment.systemPackages = with pkgs; [
       direnv
       fish
@@ -31,7 +32,11 @@
       signal-desktop
       rsync
       fnm
+      nixd
+      alejandra
     ];
+
+    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     homebrew = {
       enable = true;
@@ -75,6 +80,7 @@
         "maccy"
         "stats"
         "tunnelblick"
+        "tailscale"
       ];
       masApps = {
         "Yomu" = 562211012;

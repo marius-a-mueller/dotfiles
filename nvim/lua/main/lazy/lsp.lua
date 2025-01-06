@@ -175,6 +175,28 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			})
 
+            require("lspconfig").nixd.setup({
+                cmd = { "nixd" },
+                settings = {
+                    nixd = {
+                        nixpkgs = {
+                            expr = "import <nixpkgs> { }",
+                        },
+                        formatting = {
+                            command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+                        },
+                        -- options = {
+                        --   nixos = {
+                        --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").nixosConfigurations.CONFIGNAME.options',
+                        --   },
+                        --   home_manager = {
+                        --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
+                        --   },
+                        -- },
+                    },
+                },
+            })
+
 			require("mason-lspconfig").setup({
 				ensure_installed = { "jsonnet_ls" },
 				handlers = {
@@ -183,6 +205,29 @@ return {
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
 					end,
+                    -- nixd = function()
+                    --     require("lspconfig").nixd.setup({
+                    --         cmd = { "nixd" },
+                    --         settings = {
+                    --           nixd = {
+                    --             nixpkgs = {
+                    --               expr = "import <nixpkgs> { }",
+                    --             },
+                    --             formatting = {
+                    --               command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+                    --             },
+                    --             -- options = {
+                    --             --   nixos = {
+                    --             --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").nixosConfigurations.CONFIGNAME.options',
+                    --             --   },
+                    --             --   home_manager = {
+                    --             --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
+                    --             --   },
+                    --             -- },
+                    --           },
+                    --         },
+                    --       })
+                    -- end,
 					jsonnet_ls = function()
 						require("lspconfig").jsonnet_ls.setup({
 							settings = {
