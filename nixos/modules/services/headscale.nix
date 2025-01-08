@@ -10,9 +10,16 @@ in {
         enable = true;
         address = "0.0.0.0";
         port = 8080;
-        server_url = "https://${domain}";
+        settings = {
+          server_url = "https://${domain}:443";
+          dns = {
+            base_domain = "magic.local";
+            nameservers.global = [ "192.168.42.10" ];
+          };
+        };
       };
 
+      nginx.enable = true;
       nginx.virtualHosts.${domain} = {
         forceSSL = true;
         enableACME = true;
@@ -23,7 +30,10 @@ in {
         };
       };
     };
-
+    security.acme = {
+      acceptTerms = true;
+      defaults.email = "acme@mindful-student.net";
+    };
     environment.systemPackages = [ config.services.headscale.package ];
   };
 }

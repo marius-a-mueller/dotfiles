@@ -1,14 +1,22 @@
-{ ... }:
+{ config, ... }:
 {
   # Provisioning
   # nix run github:nix-community/nixos-anywhere -- --flake .#helms-deep --target-host marius@<ip address> --build-on-remote
-  # Upgrading
-  # nixos-rebuild switch --flake .#helms-deep --target-host "root@<ip address>"
+  # Upgrading (with custom fish function)
+  # nixos-deploy .#helms-deep marius@<ip address>
 
   imports = [
     ./hardware-configuration.nix
     ../../../modules/disko
+    ../../../modules
   ];
+
+  headscale.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 80 443 ];
+  };
 
   programs = {
     fish.enable = true;
