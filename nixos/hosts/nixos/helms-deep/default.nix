@@ -12,6 +12,7 @@
   ];
 
   headscale.enable = true;
+  searx.enable = true;
 
   networking.firewall = {
     enable = true;
