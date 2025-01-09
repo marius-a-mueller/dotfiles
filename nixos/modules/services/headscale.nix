@@ -14,12 +14,11 @@ in {
           server_url = "https://${domain}:443";
           dns = {
             base_domain = "magic.local";
-            nameservers.global = [ "192.168.42.10" ];
+            nameservers.global = [ "100.64.0.3" ];
           };
         };
       };
 
-      nginx.enable = true;
       nginx.virtualHosts.${domain} = {
         forceSSL = true;
         enableACME = true;
@@ -29,10 +28,6 @@ in {
           proxyWebsockets = true;
         };
       };
-    };
-    security.acme = {
-      acceptTerms = true;
-      defaults.email = "acme@mindful-student.net";
     };
     environment.systemPackages = [ config.services.headscale.package ];
   };
