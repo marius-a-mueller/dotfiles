@@ -5,7 +5,7 @@
     ./forgejo.nix
     ./woodpecker.nix
     ./privatebin.nix
-    ./searx
+    ./searx.nix
   ];
 
     services.nginx = {
