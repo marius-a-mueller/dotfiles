@@ -2,11 +2,11 @@
 let domain = "woodpecker.mindful-student.net";
 in {
   options = {
-    woodpecker.enable = lib.mkEnableOption "enables woodpecker";
+    woodpecker.enable = lib.mkEnableOption "woodpecker";
   };
   config = lib.mkIf config.woodpecker.enable {
     services.woodpecker-server = {
-      enabled = true;
+      enable = true;
       environment = {
         WOODPECKER_HOST = "${domain}";
         WOODPECKER_OPEN = "true";

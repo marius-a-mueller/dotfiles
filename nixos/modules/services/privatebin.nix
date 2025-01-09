@@ -9,8 +9,8 @@ in {
     services = {
       privatebin = {
         enable = true;
-        enableNginx = true;
-        virtualHost = "${domain}";
+        # enableNginx = true;
+        # virtualHost = "${domain}";
       };
 
       # nginx.enable = true;

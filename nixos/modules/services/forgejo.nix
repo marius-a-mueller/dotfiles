@@ -4,11 +4,11 @@ let
   srv = cfg.settings.server;
 in {
   options = {
-    forgejo.enable = lib.mkEnableOption "enables forgejo";
+    forgejo.enable = lib.mkEnableOption "forgejo";
   };
   config = lib.mkIf config.forgejo.enable {
     services.forgejo = {
-      enabled = true;
+      enable = true;
       database.type = "postgres";
       # Enable support for Git Large File Storage
       lfs.enable = true;
