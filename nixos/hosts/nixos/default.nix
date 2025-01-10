@@ -52,6 +52,25 @@ in
     ];
   };
 
+  hogwash = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs pkgs lib system vars;
+      host = {
+        hostName = "hogwash";
+      };
+    };
+    modules = [
+      ./hogwash
+      ./configuration.nix
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
+
   nixbox = lib.nixosSystem {
     inherit system;
     specialArgs = {
