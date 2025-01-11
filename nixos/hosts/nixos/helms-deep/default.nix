@@ -11,6 +11,8 @@
     ../../../modules
   ];
 
+  disko.enable = true;
+  nginx.enable = true;
   headscale.enable = true;
   searx.enable = true;
 
@@ -30,8 +32,6 @@
     yazi.enable = true;
     starship.enable = true;
   };
-
-  disko.enable = true;
 
   system.stateVersion = "24.11";
 }
