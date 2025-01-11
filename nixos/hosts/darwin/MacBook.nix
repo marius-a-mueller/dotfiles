@@ -79,8 +79,8 @@
         "spotify"
         "maccy"
         "stats"
-        "tunnelblick"
         "tailscale"
+        "raspberry-pi-imager"
       ];
       masApps = {
         "Yomu" = 562211012;
