@@ -34,6 +34,7 @@
       fnm
       nixd
       alejandra
+      sops
     ];
 
     nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
