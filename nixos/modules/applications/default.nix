@@ -4,5 +4,6 @@
     ./firefox
     ./steam
     ./wireguard.nix
+    ./tailscale.nix
   ];
 }
