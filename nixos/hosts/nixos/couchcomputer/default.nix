@@ -5,10 +5,10 @@
     ../../../modules
   ];
 
+  # tailscale.enable = true;
   steam.enable = true;
   firefox.enable = true;
-  wireguard.enable = true;
-  greetd.enable = false;
+  tuigreet.enable = true;
   wayland.enable = true;
   hyprland.enable = true;
 
@@ -56,15 +56,14 @@
   console.keyMap = lib.mkForce "de";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound with pipewire.
 
-  environment = {
-    systemPackages = with pkgs; [
-      firefox
-    ];
-  };
+  # environment = {
+  #   systemPackages = with pkgs; [
+  #   ];
+  # };
 
   # Enable automatic login for the user.
   # services.displayManager.autoLogin.enable = true;
@@ -75,8 +74,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  security.polkit.enable = true;
 
   system.stateVersion = lib.mkForce "25.05"; # Did you read the comment?
 }

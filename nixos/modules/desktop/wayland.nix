@@ -1,13 +1,13 @@
-{ lib, config, ... }: {
+{ pkgs, lib, config, ... }: {
   options = {
     wayland.enable = lib.mkEnableOption "enables wayland";
   };
 
   config = lib.mkIf config.wayland.enable {
-    hardware.opengl.enable = true;
+    hardware.graphics.enable = true;
 
     # audio
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
@@ -17,6 +17,7 @@
       jack.enable = true;
     };
     xdg.portal.wlr.enable = true;
+    xdg.portal.configPackages = [ pkgs.gnome-session ];
     services.dbus.enable = true;
   };
 }

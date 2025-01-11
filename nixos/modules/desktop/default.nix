@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   imports = [
-    ./greetd.nix
+    ./tuigreet.nix
     ./hyprland.nix
     ./wayland.nix
   ];
