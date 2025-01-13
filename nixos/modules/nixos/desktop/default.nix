@@ -3,9 +3,9 @@
   imports = [
     ./tuigreet.nix
     ./swaync.nix
-    ./wayland.nix
+    # ./wayland.nix
     ./wofi
-    ./hyprland
+    # ./hyprland
     ./waybar
   ];
 }

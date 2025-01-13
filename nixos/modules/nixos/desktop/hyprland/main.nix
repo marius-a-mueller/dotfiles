@@ -12,6 +12,8 @@
       libnotify
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
+      wl-clipboard
+      wtype
     ];
     wayland.windowManager.hyprland = {
       enable = true;

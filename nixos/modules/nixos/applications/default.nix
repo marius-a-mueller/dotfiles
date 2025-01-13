@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   imports = [
-    ./firefox
+    ./firefox.nix
     ./steam
     ./wireguard.nix
     ./tailscale.nix

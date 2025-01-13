@@ -4,11 +4,6 @@
     firefox.enable = lib.mkEnableOption "enables firefox";
   };
   config = lib.mkIf config.firefox.enable {
-    environment = {
-      systemPackages = with pkgs; [
-        firefox
-      ];
-    };
     home-manager.users.${vars.user} = {
       home.sessionVariables = {
         MOZ_LEGACY_PROFILES = 1;

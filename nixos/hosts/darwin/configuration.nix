@@ -1,9 +1,5 @@
 { pkgs, vars, config, ... }:
 {
-  imports = [
-    ./modules
-  ];
-
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";
     shell = pkgs.wezterm;

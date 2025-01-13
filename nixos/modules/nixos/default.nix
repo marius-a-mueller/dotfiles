@@ -4,5 +4,6 @@
     ./applications
     ./desktop
     ./services
+    ./disko
   ];
 }

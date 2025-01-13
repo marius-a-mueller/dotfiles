@@ -79,23 +79,81 @@
         terminal = "wezterm";
         editor = "nvim";
       };
-      currentSystem = builtins.currentSystem;
-      pkgs = import inputs.nixpkgs { system = currentSystem; };
+
+      systemConfig = system: {
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        stable = import inputs.nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+
+      mkNixosConfiguration = {
+        hostname,
+        system ? "x86_64-linux",
+        }: let
+          inherit (systemConfig system) pkgs stable;
+        in
+          inputs.nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs hostname pkgs vars stable;
+            };
+            modules = [
+              ./hosts/nixos/configuration.nix
+              ./hosts/nixos/${hostname}/configuration.nix
+              ./modules/shared
+              ./modules/nixos
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+              }
+              # inputs.disko.nixosModules.disko
+            ];
+          };
+
+      mkDarwinConfiguration = {
+        hostname,
+        system ? "aarch64-darwin",
+        }: let
+          inherit (systemConfig system) pkgs stable;
+        in
+          inputs.darwin.lib.darwinSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs hostname pkgs vars stable;
+            };
+            modules = [
+              ./hosts/darwin/configuration.nix
+              ./hosts/darwin/${hostname}/configuration.nix
+              ./modules/shared
+              ./modules/darwin
+              inputs.home-manager.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+              }
+              # inputsnix-homebrew.darwinModules.nix-homebrew
+            ];
+          };
+
     in
     {
-      nixosConfigurations = (
-        import ./hosts/nixos {
-          inherit (inputs.nixpkgs) lib;
-          inherit inputs vars;
-        }
-      );
+      nixosConfigurations = {
+        nixflix       = mkNixosConfiguration { hostname = "nixflix"; };
+        couchcomputer = mkNixosConfiguration { hostname = "couchcomputer"; };
+        helms-deep    = mkNixosConfiguration { hostname = "helms-deep"; };
+        hogwash       = mkNixosConfiguration { hostname = "hogwash"; };
+        nixbox        = mkNixosConfiguration { hostname = "nixbox"; };
+      };
 
-      darwinConfigurations = (
-        import ./hosts/darwin {
-          inherit (inputs.nixpkgs) lib;
-          inherit inputs vars;
-        }
-      );
+      darwinConfigurations = {
+        MacBook       = mkDarwinConfiguration { hostname = "MacBook"; };
+      };
 
       devShells.aarch64-darwin.default = let
           pkgs = import inputs.nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
@@ -106,12 +164,5 @@
               nixos-rebuild
             ];
           };
-
-      # homeConfigurations = (
-      #   import ./nix {
-      #     inherit (nixpkgs) lib;
-      #     inherit inputs nixpkgs nixpkgs-stable home-manager nixgl vars;
-      #   }
-      # );
     };
 }

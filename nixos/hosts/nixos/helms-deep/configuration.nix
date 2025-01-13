@@ -7,8 +7,6 @@
 
   imports = [
     ./hardware-configuration.nix
-    ../../../modules/disko
-    ../../../modules
   ];
 
   disko.enable = true;
