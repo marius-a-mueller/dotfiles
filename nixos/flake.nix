@@ -41,6 +41,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      sops-nix = {
+        url = "github:Mic92/sops-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       # Fixes OpenGL With Other Distros.
       nixgl = {
         url = "github:guibou/nixGL";
