@@ -1,4 +1,4 @@
-{ lib, pkgs, vars, ...}:
+{ lib, pkgs, ...}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -8,9 +8,12 @@
   # tailscale.enable = true;
   steam.enable = true;
   firefox.enable = true;
-  tuigreet.enable = true;
+  # tuigreet.enable = true;
   wayland.enable = true;
   hyprland.enable = true;
+  waybar.enable = true;
+  wofi.enable = true;
+  swaync.enable = true;
 
   # nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -60,10 +63,11 @@
 
   # Enable sound with pipewire.
 
-  # environment = {
-  #   systemPackages = with pkgs; [
-  #   ];
-  # };
+  environment = {
+    systemPackages = with pkgs; [
+      wezterm
+    ];
+  };
 
   # Enable automatic login for the user.
   # services.displayManager.autoLogin.enable = true;

@@ -7,13 +7,13 @@
   security.pam.services.hyprlock = {};
 
   home-manager.users.${vars.user} = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      libsForQt5.xwaylandvideobridge
+      libnotify
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
     wayland.windowManager.hyprland = {
-      home.packages = with pkgs; [
-        libsForQt5.xwaylandvideobridge
-        libnotify
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
-      ];
       enable = true;
       xwayland.enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

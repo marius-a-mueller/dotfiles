@@ -2,7 +2,10 @@
 {
   imports = [
     ./tuigreet.nix
-    ./hyprland.nix
+    ./swaync.nix
     ./wayland.nix
+    ./wofi
+    ./hyprland
+    ./waybar
   ];
 }

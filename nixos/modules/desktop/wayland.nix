@@ -16,8 +16,8 @@
       pulse.enable = true;
       jack.enable = true;
     };
-    xdg.portal.wlr.enable = true;
-    xdg.portal.configPackages = [ pkgs.gnome-session ];
-    services.dbus.enable = true;
+    # xdg.portal.wlr.enable = true;
+    # xdg.portal.configPackages = [ pkgs.gnome-session ];
+    # services.dbus.enable = true;
   };
 }
