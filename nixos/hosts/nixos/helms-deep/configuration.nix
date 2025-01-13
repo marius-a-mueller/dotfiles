@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   # Provisioning
   # nix run github:nix-community/nixos-anywhere -- --flake .#helms-deep --target-host marius@<ip address> --build-on-remote

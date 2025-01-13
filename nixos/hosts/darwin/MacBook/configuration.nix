@@ -1,4 +1,4 @@
-{ pkgs, lib, vars, config, inputs, ... }:
+{ pkgs, inputs, ... }:
 {
   firefox.enable = true;
 
