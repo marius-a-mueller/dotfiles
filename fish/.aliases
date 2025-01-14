@@ -3,6 +3,7 @@ alias zshrc="nvim ~/.zshrc"
 
 # BARTIB
 alias bt="bartib"
+alias btx="bartib sanity && bartib check"
 alias btt="bartib report --today"
 alias bte="bartib edit"
 alias bty="bartib report --yesterday"
