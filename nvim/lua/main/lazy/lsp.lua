@@ -76,13 +76,13 @@ return {
 			-- Format on save
 			local augroup = vim.api.nvim_create_augroup
 			local autocmd = vim.api.nvim_create_autocmd
-			augroup("__formatter__", { clear = true })
-			autocmd("BufWritePost", {
-				group = "__formatter__",
-				command = ":FormatWrite",
-			})
+			-- augroup("__formatter__", { clear = true })
+			-- autocmd("BufWritePost", {
+			-- 	group = "__formatter__",
+			-- 	command = ":FormatWrite",
+			-- })
 
-			vim.keymap.set("n", "<leader>f", ":LspZeroFormat<CR>")
+			vim.keymap.set("n", "<leader>f", ":FormatWrite<CR>")
 
 			-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 			require("formatter").setup({
@@ -175,27 +175,27 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			})
 
-            require("lspconfig").nixd.setup({
-                cmd = { "nixd" },
-                settings = {
-                    nixd = {
-                        nixpkgs = {
-                            expr = "import <nixpkgs> { }",
-                        },
-                        formatting = {
-                            command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
-                        },
-                        -- options = {
-                        --   nixos = {
-                        --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").nixosConfigurations.CONFIGNAME.options',
-                        --   },
-                        --   home_manager = {
-                        --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
-                        --   },
-                        -- },
-                    },
-                },
-            })
+			require("lspconfig").nixd.setup({
+				cmd = { "nixd" },
+				settings = {
+					nixd = {
+						nixpkgs = {
+							expr = "import <nixpkgs> { }",
+						},
+						formatting = {
+							command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+						},
+						-- options = {
+						--   nixos = {
+						--       expr = '(builtins.getFlake "/PATH/TO/FLAKE").nixosConfigurations.CONFIGNAME.options',
+						--   },
+						--   home_manager = {
+						--       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
+						--   },
+						-- },
+					},
+				},
+			})
 
 			require("mason-lspconfig").setup({
 				ensure_installed = { "jsonnet_ls" },
@@ -205,29 +205,6 @@ return {
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
 					end,
-                    -- nixd = function()
-                    --     require("lspconfig").nixd.setup({
-                    --         cmd = { "nixd" },
-                    --         settings = {
-                    --           nixd = {
-                    --             nixpkgs = {
-                    --               expr = "import <nixpkgs> { }",
-                    --             },
-                    --             formatting = {
-                    --               command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
-                    --             },
-                    --             -- options = {
-                    --             --   nixos = {
-                    --             --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").nixosConfigurations.CONFIGNAME.options',
-                    --             --   },
-                    --             --   home_manager = {
-                    --             --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
-                    --             --   },
-                    --             -- },
-                    --           },
-                    --         },
-                    --       })
-                    -- end,
 					jsonnet_ls = function()
 						require("lspconfig").jsonnet_ls.setup({
 							settings = {

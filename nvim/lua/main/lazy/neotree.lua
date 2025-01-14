@@ -25,7 +25,7 @@ return {
 					["b"] = function()
 						vim.api.nvim_exec("Neotree focus buffers left", true)
 					end,
-					["g"] = function()
+					[";"] = function()
 						vim.api.nvim_exec("Neotree focus git_status left", true)
 					end,
 				},
