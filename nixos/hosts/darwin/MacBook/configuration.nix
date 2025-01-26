@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, vars, ... }:
 {
   firefox.enable = true;
 
@@ -31,9 +31,11 @@
     signal-desktop
     rsync
     fnm
-    nixd
-    alejandra
+    nixd # nix lsp
+    alejandra # nix formatter
     sops
+    logseq
+    hugo
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -81,9 +83,10 @@
       "stats"
       "tailscale"
       "raspberry-pi-imager"
+      "steam"
+      "thunderbird"
     ];
     masApps = {
-      "Yomu" = 562211012;
       "Amphetamine" = 937984704;
       "Wireguard" = 1451685025;
       "Shareful" = 1522267256;
@@ -95,8 +98,7 @@
       "/Applications/Firefox.app"
       "/Applications/Mullvad Browser.app"
       "${pkgs.obsidian}/Applications/Obsidian.app"
-      "/System/Applications/Mail.app"
-      "/System/Applications/Calendar.app"
+      "/Applications/Thunderbird.app"
       "${pkgs.spotify}/Applications/Spotify.app"
       "/Applications/Bitwarden.app"
       "${pkgs.zotero}/Applications/Zotero.app"
