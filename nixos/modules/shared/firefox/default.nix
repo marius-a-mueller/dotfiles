@@ -81,7 +81,7 @@
               "browser.fullscreen.autohide" = false;
               "browser.newtabpage.pinned" = "";
               "browser.startup.homepage" = "https://startpage.com";
-              "browser.tabs.loadInBackground" = false;
+              "browser.tabs.loadInBackground" = true;
               "browser.urlbar.update2" = true;
               "browser.urlbar.shortcuts.bookmarks" = false;
               "browser.urlbar.shortcuts.tabs" = false;
