@@ -36,6 +36,7 @@
     sops
     logseq
     hugo
+    localsend
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
