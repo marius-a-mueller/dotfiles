@@ -1,3 +1,4 @@
+alias k="kubectl"
 alias vim="nvim"
 alias zshrc="nvim ~/.zshrc"
 
