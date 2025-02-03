@@ -7,3 +7,4 @@ containers
 credentials.auto.tfvars
 configstore
 .terraform
+nixos/secrets/
