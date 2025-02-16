@@ -1,4 +1,4 @@
-{ lib, config, pkgs, host, inputs, vars, modulesPath, ... }:
+{ lib, config, pkgs, hostname, inputs, vars, modulesPath, ... }:
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
@@ -14,7 +14,7 @@
   };
   home-manager.backupFileExtension = "backup";
 
-  networking.hostName = lib.mkDefault "${host.hostName}";
+  networking.hostName = lib.mkDefault "${hostname}";
   # Enable networking
   networking.networkmanager.enable = true;
 
