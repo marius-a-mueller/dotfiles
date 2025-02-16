@@ -36,7 +36,7 @@ in {
       dnsResolver = "1.1.1.1:53";
       webroot = null;
       credentialFiles = {
-        "CF_DNS_API_TOKEN_FILE" = "/run/secrets/mindful-student.net";
+        "CF_DNS_API_TOKEN_FILE" = "/var/lib/mindful-student.net";
       };
     };
   };

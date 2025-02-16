@@ -150,6 +150,7 @@
         hogwash       = mkNixosConfiguration { hostname = "hogwash"; };
         nixbox        = mkNixosConfiguration { hostname = "nixbox"; };
         gringotts     = mkNixosConfiguration { hostname = "gringotts"; };
+        eye-of-sauron = mkNixosConfiguration { hostname = "eye-of-sauron"; };
       };
 
       darwinConfigurations = {
