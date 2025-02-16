@@ -17,6 +17,7 @@
     enable = true;
     allowedTCPPorts = [ 80 443 ];
   };
+  networking.networkmanager.ethernet.macAddress = "bc:24:11:5b:0c:1b";
 
   programs = {
     fish.enable = true;
