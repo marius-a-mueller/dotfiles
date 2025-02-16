@@ -8,6 +8,7 @@
   nginx.enable = true;
   prometheus-server.enable = true;
   grafana.enable = true;
+  metrics-exporter.enable = true;
 
   networking.firewall = {
     enable = true;

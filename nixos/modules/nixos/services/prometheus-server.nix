@@ -10,12 +10,18 @@
     services.prometheus = {
       enable = true;
       scrapeConfigs = [
-      {
-        job_name = "gringotts";
-        static_configs = [{
-          targets = [ "192.168.42.161:9100" ];
-        }];
-      }
+        {
+          job_name = "gringotts";
+          static_configs = [{
+            targets = [ "192.168.42.161:9100" ];
+          }];
+        }
+        {
+          job_name = "monitoring";
+          static_configs = [{
+            targets = [ "127.0.0.1:9100" ];
+          }];
+        }
       ];
     };
   };
