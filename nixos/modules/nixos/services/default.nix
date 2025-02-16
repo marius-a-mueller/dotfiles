@@ -7,5 +7,6 @@
     ./privatebin.nix
     ./searx.nix
     ./nginx.nix
+    ./vaultwarden.nix
   ];
 }

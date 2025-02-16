@@ -10,7 +10,7 @@ in {
       backupDir = "/var/backup/vaultwarden";
       environmentFile = "/var/lib/vaultwarden.env";
       config = {
-        DOMAIN = "${domain}";
+        DOMAIN = "https://${domain}";
         SIGNUPS_ALLOWED = false;
 
         ROCKET_ADDRESS = "127.0.0.1";
@@ -18,12 +18,10 @@ in {
         ROCKET_LOG = "critical";
 
         # https://github.com/dani-garcia/vaultwarden/wiki/SMTP-configuration
-        # SMTP_HOST = "127.0.0.1";
-        # SMTP_PORT = 25;
-        # SMTP_SSL = false;
-
-        # SMTP_FROM = "admin@bitwarden.example.com";
-        # SMTP_FROM_NAME = "example.com Bitwarden server";
+        SMTP_HOST = "mail.your-server.de";
+        SMTP_PORT = 587;
+        SMTP_SECURITY = "starttls";
+        SMTP_FROM_NAME = "Vaultwarden";
       };
     };
     services.nginx.virtualHosts."${domain}" = {
@@ -31,6 +29,14 @@ in {
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+      };
+    };
+    security.acme.certs."${domain}" = {
+      dnsProvider = "cloudflare";
+      dnsResolver = "1.1.1.1:53";
+      webroot = null;
+      credentialFiles = {
+        "CF_DNS_API_TOKEN_FILE" = "/run/secrets/mindful-student.net";
       };
     };
   };
