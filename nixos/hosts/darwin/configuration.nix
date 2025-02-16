@@ -85,6 +85,7 @@
   '';
 
   nix = {
+    enable = true;
     package = pkgs.nix;
     gc = {
       automatic = true;
@@ -135,9 +136,6 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = true;
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -146,6 +144,4 @@
   system.stateVersion = 4;
 
   home-manager.backupFileExtension = "backup";
-  nix.configureBuildUsers = true;
-  nix.useDaemon = true;
 }
