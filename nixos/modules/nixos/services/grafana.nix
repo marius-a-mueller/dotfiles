@@ -26,6 +26,7 @@ in {
             name = "Prometheus";
             type = "prometheus";
             url = "http://${config.services.prometheus.listenAddress}:${toString config.services.prometheus.port}";
+            isDefault = true;
           }
         ];
       };
