@@ -12,6 +12,7 @@
   disko.enable = true;
   nginx.enable = true;
   vaultwarden.enable = true;
+  metrics-exporter.enable = true;
 
   networking.firewall = {
     enable = true;

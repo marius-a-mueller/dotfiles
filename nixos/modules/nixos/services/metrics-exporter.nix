@@ -15,7 +15,7 @@
         "textfile"
       ];
       openFirewall = true;
-      firewallFilter = "-i br0 -p tcp -m tcp --dport 9100";
+      firewallFilter = "-i ens18 -p tcp -m tcp --dport 9100";
     };
   };
 }

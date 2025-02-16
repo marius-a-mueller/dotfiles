@@ -8,5 +8,6 @@
     ./searx.nix
     ./nginx.nix
     ./vaultwarden.nix
+    ./metrics-exporter.nix
   ];
 }
