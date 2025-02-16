@@ -11,6 +11,7 @@
 
   disko.enable = true;
   nginx.enable = true;
+  shiori.enable = true;
   vaultwarden.enable = true;
   metrics-exporter.enable = true;
 

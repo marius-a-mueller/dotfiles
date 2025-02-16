@@ -1,5 +1,5 @@
 { lib, config, ... }:
-let domain = "bookmarks.mindful-student.net";
+let domain = "shiori.mindful-student.net";
 in {
   options = {
     shiori.enable = lib.mkEnableOption "enables shiori";

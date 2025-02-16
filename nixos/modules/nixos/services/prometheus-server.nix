@@ -11,16 +11,33 @@
       enable = true;
       scrapeConfigs = [
         {
-          job_name = "gringotts";
-          static_configs = [{
-            targets = [ "192.168.42.161:9100" ];
-          }];
-        }
-        {
-          job_name = "monitoring";
-          static_configs = [{
-            targets = [ "127.0.0.1:9100" ];
-          }];
+          job_name = "node";
+          static_configs = [
+            {
+              targets = [
+                "127.0.0.1:9100"
+              ];
+              labels = {
+                hostname = "monitoring";
+              };
+            }
+            {
+              targets = [
+                "192.168.42.214:9100"
+              ];
+              labels = {
+                hostname = "the-shire";
+              };
+            }
+            {
+              targets = [
+                "192.168.42.212:9100"
+              ];
+              labels = {
+                hostname = "gringotts";
+              };
+            }
+          ];
         }
       ];
     };

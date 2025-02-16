@@ -11,5 +11,6 @@
     ./metrics-exporter.nix
     ./grafana.nix
     ./prometheus-server.nix
+    ./shiori.nix
   ];
 }
