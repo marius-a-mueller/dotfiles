@@ -112,7 +112,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
               }
-              # inputs.disko.nixosModules.disko
+              inputs.disko.nixosModules.disko
             ];
           };
 
@@ -149,6 +149,7 @@
         helms-deep    = mkNixosConfiguration { hostname = "helms-deep"; };
         hogwash       = mkNixosConfiguration { hostname = "hogwash"; };
         nixbox        = mkNixosConfiguration { hostname = "nixbox"; };
+        gringotts     = mkNixosConfiguration { hostname = "gringotts"; };
       };
 
       darwinConfigurations = {
