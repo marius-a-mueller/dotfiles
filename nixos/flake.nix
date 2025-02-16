@@ -151,6 +151,7 @@
         nixbox        = mkNixosConfiguration { hostname = "nixbox"; };
         gringotts     = mkNixosConfiguration { hostname = "gringotts"; };
         eye-of-sauron = mkNixosConfiguration { hostname = "eye-of-sauron"; };
+        the-shire     = mkNixosConfiguration { hostname = "the-shire"; };
       };
 
       darwinConfigurations = {
