@@ -7,6 +7,7 @@
   disko.enable = true;
   nginx.enable = true;
   shiori.enable = true;
+  homepage.enable = true;
   metrics-exporter.enable = true;
 
   networking.firewall = {
