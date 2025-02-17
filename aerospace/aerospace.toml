@@ -204,6 +204,11 @@ check-further-callbacks = false
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.ScreenSharing'
+check-further-callbacks = false
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.objective-see.lulu'
 run = 'layout floating'
 
