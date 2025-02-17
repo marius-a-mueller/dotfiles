@@ -190,6 +190,10 @@ if.app-id = 'com.apple.mail'
 run = "move-node-to-workspace M"
 
 [[on-window-detected]]
+if.app-id = 'org.mozilla.thunderbird'
+run = "move-node-to-workspace M"
+
+[[on-window-detected]]
 if.app-id = 'com.apple.reminders'
 run = "move-node-to-workspace M"
 
@@ -210,6 +214,7 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.objective-see.lulu'
+if.window-title-regex-substring = 'LuLu Alert'
 run = 'layout floating'
 
 [[on-window-detected]]
