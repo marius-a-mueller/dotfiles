@@ -72,8 +72,8 @@
               floccus
             ];
             settings = {
-              "sidebar.revamp" = true;
-              "sidebar.verticalTabs" = true;
+              "sidebar.revamp" = false;
+              "sidebar.verticalTabs" = false;
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "apz.allow_zooming" = true;
               "browser.aboutConfig.showWarning" = false;
