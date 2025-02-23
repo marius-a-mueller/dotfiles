@@ -13,5 +13,6 @@
     ./prometheus-server.nix
     ./shiori.nix
     ./homepage.nix
+    ./overleaf.nix
   ];
 }
