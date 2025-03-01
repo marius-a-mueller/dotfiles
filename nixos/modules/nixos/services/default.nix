@@ -14,5 +14,6 @@
     ./shiori.nix
     ./homepage.nix
     ./overleaf.nix
+    ./wallabag.nix
   ];
 }
