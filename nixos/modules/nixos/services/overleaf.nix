@@ -120,7 +120,7 @@ in {
         "podman-compose-overleaf-root.target"
       ];
     };
-    virtualisation.oci-containers.containers."podman-mongosetup" = {
+    virtualisation.oci-containers.containers."mongo-mongosetup" = {
       image = "docker.io/mongo:6.0";
       volumes = [
         "/etc/mongo_setup.sh:/scripts/mongo_setup.sh:rw"
@@ -137,7 +137,8 @@ in {
     };
     systemd.services."podman-mongo-mongosetup" = {
       serviceConfig = {
-        restart = lib.mkOverride 90 "no";
+        Restart = lib.mkOverride 90 "no";
+        RemainAfterExit = lib.mkOverride 90 "yes";
       };
       after = [
         "podman-network-overleaf_default.service"
