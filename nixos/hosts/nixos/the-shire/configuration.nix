@@ -6,9 +6,9 @@
 
   disko.enable = true;
   nginx.enable = true;
-  shiori.enable = true;
   homepage.enable = true;
   overleaf.enable = true;
+  wallabag.enable = true;
   metrics-exporter.enable = true;
 
   networking.firewall = {
@@ -27,6 +27,7 @@
     };
     yazi.enable = true;
     starship.enable = true;
+    htop.enable = true;
   };
 
   programs.bash = {
