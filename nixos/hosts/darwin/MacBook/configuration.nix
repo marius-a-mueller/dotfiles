@@ -37,6 +37,7 @@
     logseq
     hugo
     localsend
+    lazygit
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -73,7 +74,6 @@
       "slack"
       "tor-browser"
       "whatsapp"
-      "bitwarden"
       "mullvad-browser"
       "iina"
       "the-unarchiver"
@@ -91,6 +91,7 @@
       "Amphetamine" = 937984704;
       "Wireguard" = 1451685025;
       "Shareful" = 1522267256;
+      "Bitwarden" = 1352778147;
     };
   };
   system.defaults = {
