@@ -55,7 +55,7 @@
             userChrome = builtins.readFile ./userChrome.css;
 
             # nix flake show "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"
-            extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+            extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
               ublock-origin
               sponsorblock
               youtube-shorts-block
