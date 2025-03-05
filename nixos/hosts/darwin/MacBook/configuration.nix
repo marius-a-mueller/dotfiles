@@ -38,6 +38,7 @@
     hugo
     localsend
     lazygit
+    compose2nix
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
