@@ -15,5 +15,7 @@
     ./homepage.nix
     ./overleaf.nix
     ./wallabag.nix
+    ./pangolin-server.nix
+    ./pangolin-newt.nix
   ];
 }
